@@ -1,19 +1,19 @@
-# cse210-project
+# Realm of The Goblin King
 
---What program are we going to create? Use your brainstorming from the solo checkpoint to answer this question together.
-
-We are going to create the Chrome dino jumper game, but we are thinking we will change the main character to 
-a kangaroo and give the background graphics some color. 
+Realm of the Goblin King is a concept game based on *Labrynth*. The game play involves a maze the player must navigate to win.  Finish the maze quickly and get more points.  Run into too many hazards and the player dies.
 
 
---What technologies will we use? The answer to this question is mostly already decided. Just take a minute to remind yourselves of the language, libraries and anything else you plan on using.
+# Technologies:
 
 We will be using Python as the language. Then we will use the Arcade and Random libraries. 
 
 
---What features will we include? The goal of asking this question is to identify what will and what won't be included. Use this simple feature planning guide to help you.
+# Goals:
 
-*Please look at the Dino Jumper Mockup Image to the left*
+1. Create a maze solving game including features like:
+   - A moving player
+   - A map wih walls the player cannot going through
+   - A way to win 
 
 Main Scene(2)
  * Start Button(2)
