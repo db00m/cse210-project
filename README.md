@@ -36,3 +36,4 @@ We will be using Python as the language. Then we will use the Arcade and Random 
 # Authers:
 
 * David Bloomfied: david.s.bloomfield@gmail.com
+* Jacob Cloward: jacobcloward@yahoo.com
