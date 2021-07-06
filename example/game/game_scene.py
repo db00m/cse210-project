@@ -10,6 +10,7 @@ from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
 from game.move_actors_action import MoveActorsAction
 from game.maze import Maze
+from game import constants
 import arcade
 
 
@@ -19,22 +20,20 @@ class GameScene(Scene):
         
         # create the cast
         player = Player()
-        maze = Maze()
+        maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
         cast = Cast()
         
         
-        cast.add_actor("Walls", maze)
+        cast.add_actor("walls", maze)
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
         # create the script
-        move_actors_action = MoveActorsAction(engine)
-        handle_collisions_action = HandleCollisionsAction(engine)
+#        move_actors_action = MoveActorsAction(engine)
         draw_actors_action = DrawActorsAction(engine)
 
         script = Script()
-        script.add_action(Cue.ON_UPDATE, move_actors_action)
-        script.add_action(Cue.ON_UPDATE, handle_collisions_action)
+#        script.add_action(Cue.ON_UPDATE, move_actors_action)
         script.add_action(Cue.ON_DRAW, draw_actors_action)
         
         # set the scene
