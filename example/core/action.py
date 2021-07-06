@@ -5,8 +5,9 @@ class Action:
         def on_finished(self, next_scene):
             pass
 
-    def __init__(self):
+    def __init__(self, physics_engine):
         self._enabled = True
+        self._engine = physics_engine
 
     def enable(self):
         self._enable = True

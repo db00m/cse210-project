@@ -3,10 +3,11 @@ import arcade
 
 class HandleCollisionsAction(Action):
     
-    def __init__(self):
-        super().__init__()
+    def __init__(self, engine):
+        super().__init__(engine)
 
     def execute(self, cast, cue, callback):
+        super()._engine.update()
         self._handle_ground_collisions(cast)
 
     def _handle_ground_collisions(self, cast):

@@ -3,8 +3,8 @@ from core.action import Action
 
 class DrawActorsAction(Action):
     
-    def __init__(self):
-        super().__init__()
+    def __init__(self, engine):
+        super().__init__(engine)
 
     def execute(self, cast, cue, callback):
         self._draw_player(cast)

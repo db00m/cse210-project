@@ -33,6 +33,7 @@ VIEWPORT_MARGIN = 200
 class Maze(arcade.SpriteList):
 	def __init__(self):
 		super().__init__()
+		self.setup()
 		
 	def setup(self):
 		# Create the maze
@@ -74,7 +75,7 @@ class Maze(arcade.SpriteList):
 					wall.width = SPRITE_SIZE * column_count
 					self.append(wall)
 		
-	def _create_grid_with_cells(width, height):
+	def _create_grid_with_cells(self, width, height):
 		""" Create a grid with empty cells on odd row/column combinations. """
 		grid = []
 		for row in range(height):
@@ -88,8 +89,8 @@ class Maze(arcade.SpriteList):
 					grid[row].append(TILE_CRATE)
 		return grid
 	
-	def make_maze_depth_first(maze_width, maze_height):
-		maze = _create_grid_with_cells(maze_width, maze_height)
+	def make_maze_depth_first(self,maze_width, maze_height):
+		maze = self._create_grid_with_cells(maze_width, maze_height)
 		
 		w = (len(maze[0]) - 1) // 2
 		h = (len(maze) - 1) // 2
