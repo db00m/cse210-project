@@ -25,6 +25,7 @@ class GameScene(Scene):
         
         
         cast.add_actor("walls", maze)
+        cast.add_actor("player", player)
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
