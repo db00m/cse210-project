@@ -12,9 +12,9 @@ We will be using Python as the language. Then we will use the Arcade and Random 
 
 1. Create a maze solving game including features like:
    - A moving player
-   - A map wih walls the player cannot going through
+   - A map with walls the player cannot going through
    - A way to win
-2. Addtional game play features
+2. Additional game play features
    - Simple Graphics
    - Bigger Map
    - Randomly generated Map
