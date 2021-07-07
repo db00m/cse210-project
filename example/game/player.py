@@ -7,8 +7,9 @@ class Player(Actor):
     def __init__(self):
         super().__init__()
         self.center_x = 100
-        self.center_y = 80
+        self.center_y = 100
         self.texture = constants.PLAYER_IDLE
+        self.scale = constants.SCALE
         self._change_x = 0
         self.change_y = 0
 

@@ -27,7 +27,7 @@ class GameScene(Scene):
         cast.add_actor("walls", maze)
         cast.add_actor("player", player)
         
-        engine = arcade.PhysicsEngineSimple(arcade.Sprite(), maze)
+        engine = arcade.PhysicsEngineSimple(player, maze)
 
         # create the script
 #        move_actors_action = MoveActorsAction(engine)
@@ -39,7 +39,8 @@ class GameScene(Scene):
 #        script.add_action(Cue.ON_UPDATE, move_actors_action)
         script.add_action(Cue.ON_DRAW, draw_actors_action)
         script.add_action(Cue.ON_KEY_PRESS, control_actors_action)
-        script.add_action(Cue.ON_KEY_PRESS, move_actors_action)
+        script.add_action(Cue.ON_KEY_RELEASE, control_actors_action)
+        script.add_action(Cue.ON_UPDATE, move_actors_action)
         
         
         # set the scene

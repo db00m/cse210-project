@@ -27,7 +27,7 @@ class ControlActorsAction(Action):
                 player.walk(constants.LEFT)
                 
         # If a key is released, this code stops moving the player:
-        if cue.get_name() == Cue.ON_KEY_RELEASE:
+        elif cue.get_name() == Cue.ON_KEY_RELEASE:
             player.stop()
             
             
