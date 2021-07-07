@@ -9,6 +9,7 @@ class DrawActorsAction(Action):
     def execute(self, cast, cue, callback):
         self._draw_maze(cast)
         self._draw_player(cast)
+        self._draw_timer(cast)
         
     def _draw_maze(self, cast):
         walls = cast.get_actors("walls")
@@ -19,3 +20,10 @@ class DrawActorsAction(Action):
         player = cast.get_actors("player")
         player[0].draw() #There is only one
     
+    def _draw_timer(self, cast):
+        timer = cast.get_actors("timer")
+        timer[0].draw() #There is only one
+
+    def _draw_score(self, cast):
+        score = cast.get_actors("score")
+        score[0].draw() #There is only one
