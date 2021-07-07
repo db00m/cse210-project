@@ -3,8 +3,6 @@ from core.cue import Cue
 from core.scene import Scene
 from core.script import Script
 from game.player import Player
-from game.ground import Ground
-from game.instructions import Instruction
 from game.handle_collisions_action import HandleCollisionsAction
 from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
