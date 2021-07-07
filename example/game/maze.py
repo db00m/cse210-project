@@ -10,7 +10,7 @@ SPRITE_SCALING = 0.25
 SPRITE_SIZE = NATIVE_SPRITE_SIZE * SPRITE_SCALING
 
 SCREEN_WIDTH = 1000
-SCREEN_HEIGHT = 700
+height = 700
 SCREEN_TITLE = "Maze Depth First Example"
 
 MOVEMENT_SPEED = 8
@@ -21,8 +21,8 @@ TILE_CRATE = 1
 # Maze must have an ODD number of rows and columns.
 # Walls go on EVEN rows/columns.
 # Openings go on ODD rows/columns
-MAZE_HEIGHT = 51
-MAZE_WIDTH = 51
+
+
 
 MERGE_SPRITES = True
 
@@ -31,20 +31,20 @@ MERGE_SPRITES = True
 VIEWPORT_MARGIN = 200
 
 class Maze(arcade.SpriteList):
-	def __init__(self):
+	def __init__(self,width, height):
 		super().__init__()
-		self.setup()
+		self.setup(width, height)
 		
-	def setup(self):
+	def setup(self, width, height):
 		# Create the maze
-		maze = self.make_maze_depth_first(MAZE_WIDTH, MAZE_HEIGHT)
+		maze = self.make_maze_depth_first(width, height)
 		
 		# Create sprites based on 2D grid
 		if not MERGE_SPRITES:
 			# This is the simple-to-understand method. Each grid location
 			# is a sprite.
-			for row in range(MAZE_HEIGHT):
-				for column in range(MAZE_WIDTH):
+			for row in range(height):
+				for column in range(width):
 					if maze[row][column] == 1:
 						wall = arcade.Sprite(":resources:images/tiles/grassCenter.png", SPRITE_SCALING)
 						wall.center_x = column * SPRITE_SIZE + SPRITE_SIZE / 2
@@ -55,7 +55,7 @@ class Maze(arcade.SpriteList):
 			# larger sprite with a repeating texture. So if there are multiple
 			# cells in a row with a wall, we merge them into one sprite, with a
 			# repeating texture for each cell. This reduces our sprite count.
-			for row in range(MAZE_HEIGHT):
+			for row in range(height):
 				column = 0
 				while column < len(maze):
 					while column < len(maze) and maze[row][column] == 0:
