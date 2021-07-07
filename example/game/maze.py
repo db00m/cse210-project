@@ -30,12 +30,12 @@ MERGE_SPRITES = True
 # and the edge of the screen.
 VIEWPORT_MARGIN = 200
 
-class Maze(arcade.SpriteList,height,width):
-	def __init__(self):
+class Maze(arcade.SpriteList):
+	def __init__(self,width, height):
 		super().__init__()
-		self.setup()
+		self.setup(width, height)
 		
-	def setup(self):
+	def setup(self, width, height):
 		# Create the maze
 		maze = self.make_maze_depth_first(width, height)
 		

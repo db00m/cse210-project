@@ -13,6 +13,7 @@ RIGHT = "r"
 LEFT = "l"
 UP = "u"
 DOWN = "d"
+SCALE = 0.5
 
 # ANIMAL CONSTANTS
 PLAYER_JUMP_SPEED = 15

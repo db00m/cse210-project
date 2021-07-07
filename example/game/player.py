@@ -6,14 +6,9 @@ class Player(Actor):
 
     def __init__(self):
         super().__init__()
-        self.center_x = constants.CENTER_X
-        self.center_y = constants.CENTER_Y
+        self.center_x = 100
+        self.center_y = 80
         self.texture = constants.PLAYER_IDLE
-        self._is_jumping = False
-        self._is_walking = False
-        self._current_frame = 0
-        self._texture_index = 0
-        self._num_jumps = 0
         self._change_x = 0
         self.change_y = 0
 
@@ -28,12 +23,13 @@ class Player(Actor):
         elif direction == constants.DOWN:
             self.change_y = -constants.MOVE_SPEED
         
+    def stop(self):
+        self.change_y = 0
+        self.change_x = 0
         
     def update(self):
         self._update_position()
-        self._check_jumping()
-        self._check_walking()
-        self._check_falling()
+
         
 
     def _update_position(self):
