@@ -33,7 +33,8 @@ We will be using Python as the language. Then we will use the Arcade and Random 
 5. Advanced Graphics
 
 
-# Authers:
+# Authors:
 
 * David Bloomfied: david.s.bloomfield@gmail.com
 * Jacob Cloward: jacobcloward@yahoo.com
+* TJ Putnam: teetothejay13@gmail.com
