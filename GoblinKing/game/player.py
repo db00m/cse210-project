@@ -12,8 +12,9 @@ class Player(Actor):
         self.scale = constants.SCALE
         self._change_x = 0
         self.change_y = 0
+        self._items = []
 
-    
+
     def walk(self,direction):
         if direction == constants.LEFT:
             self.change_x = -constants.MOVE_SPEED
@@ -36,3 +37,9 @@ class Player(Actor):
     def _update_position(self):
         self.center_x += self.change_x
         self.center_y += self.change_y
+        
+    def pick_up_item(self, item):
+        self._items.append(item)
+        
+    def get_items(self):
+        return self._items

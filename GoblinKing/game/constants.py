@@ -13,6 +13,9 @@ LEFT = "l"
 UP = "u"
 DOWN = "d"
 SCALE = 0.2
+ITEMS = 10
+GEM = []
+GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
 
 # ANIMAL CONSTANTS
 PLAYER_JUMP_SPEED = 15
