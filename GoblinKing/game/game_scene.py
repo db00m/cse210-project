@@ -25,15 +25,16 @@ class GameScene(Scene):
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
         cast = Cast()
 
+        # Place items in the maze
         items = arcade.SpriteList()
         for _ in range(constants.ITEMS):
                 item = Item()
                 placed = False
-                item.set_texture(constants.GEM[0]) # In the future their will be diffrent types of gems
+                item.set_texture(constants.GEM[0]) # In the future their will be diffrent types of gems/items
                 while not placed:
                         # Randomly position
-                        item.center_x = random.randrange(constants.MAZE_WIDTH * 128 * constants.SCALE)
-                        item.center_y = random.randrange(constants.MAZE_HEIGHT * 128 * constants.SCALE)
+                        item.center_x = random.randrange((constants.MAZE_WIDTH - 10) * constants.ITEM_CONSTANT)
+                        item.center_y = random.randrange(10 * constants.ITEM_CONSTANT,(constants.MAZE_HEIGHT) * constants.ITEM_CONSTANT)
                         
                         # Are we in a wall?
                         walls_hit = arcade.check_for_collision_with_list(item, maze)
@@ -66,12 +67,14 @@ class GameScene(Scene):
         draw_actors_action = DrawActorsAction(engine)
         control_actors_action = ControlActorsAction(engine)
         move_actors_action = MoveActorsAction(engine)
+        handel_collisions = HandleCollisionsAction(engine)
 
         script = Script()
         script.add_action(Cue.ON_DRAW, draw_actors_action)
         script.add_action(Cue.ON_KEY_PRESS, control_actors_action)
         script.add_action(Cue.ON_KEY_RELEASE, control_actors_action)
         script.add_action(Cue.ON_UPDATE, move_actors_action)
+        script.add_action(Cue.ON_UPDATE, handel_collisions)
         
         
         # set the scene

@@ -87,7 +87,7 @@ class Maze(arcade.SpriteList):
 					grid[row].append(TILE_CRATE)
 				else:
 					grid[row].append(TILE_CRATE)
-		grid[-1][-2] = TILE_EMPTY
+		grid[-2][-3] = TILE_EMPTY
 		grid[1][0] = TILE_EMPTY
 		return grid
 	
