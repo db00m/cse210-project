@@ -25,8 +25,9 @@ class GameScene(Scene):
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
         cast = Cast()
 
-        # Place items in the maze
+        # Create Items list
         items = arcade.SpriteList()
+        # Add items to list and place them on the maze
         for _ in range(constants.ITEMS):
                 item = Item()
                 placed = False
@@ -42,6 +43,26 @@ class GameScene(Scene):
                                 # Not in a wall! Success!
                                 placed = True
                 items.append(item)
+                
+        #TODO: put this code in a function so its not so repetative        
+        hazards = arcade.SpriteList()
+        # Add items to list and place them on the maze
+        for _ in range(5):
+                hazard = Item()
+                placed = False
+                hazard.set_texture(constants.FIRE) # In the future their will be diffrent types of gems/items
+                while not placed:
+                        # Randomly position
+                        hazard.center_x = random.randrange(15 * constants.ITEM_CONSTANT,(constants.MAZE_WIDTH + 5) * constants.ITEM_CONSTANT)
+                        hazard.center_y = random.randrange(15 * constants.ITEM_CONSTANT,(constants.MAZE_HEIGHT + 5) * constants.ITEM_CONSTANT)
+                        
+                        # Are we in a wall?
+                        walls_hit = arcade.check_for_collision_with_list(hazard, maze)
+                        if len(walls_hit) == 0:
+                                # Not in a wall! Success!
+                                placed = True
+                hazards.append(hazard)
+
         
         timer = Timer()
         score = Score()
@@ -51,15 +72,7 @@ class GameScene(Scene):
         cast.add_actor("timer", timer)
         cast.add_actor("score", score)
         cast.add_actor("items", items)
-
-        timer = Timer()
-        score = Score()
-        
-        cast.add_actor("walls", maze)
-        cast.add_actor("player", player)
-        cast.add_actor("timer", timer)
-        cast.add_actor("score", score)
-
+        cast.add_actor("hazards", hazards)
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
