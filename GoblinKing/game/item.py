@@ -4,9 +4,11 @@ class Item(Actor):
 	
 	def __init__(self):
 		super().__init__()
-		self.scale = 0.2
-		self._value = 0
 		self.scale = 0.5
+		self._value = 0
+		self._hazard = 0
+		
+		
 		
 		
 		
@@ -18,3 +20,12 @@ class Item(Actor):
 		
 	def get_value(self):
 		return self._value
+	
+	def set_hazard(self, is_hazard=True):
+		"""Sets the item as a hazard unless otherwise indicated"""
+		self._hazard = is_hazard
+		
+	def is_hazard(self):
+		"""Returns a bool indicating if the item is a hazard"""
+		return self._hazard
+	
