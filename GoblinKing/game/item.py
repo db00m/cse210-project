@@ -8,6 +8,8 @@ class Item(Actor):
 		self._value = 0
 		self.scale = 0.5
 		
+		
+		
 	def set_value(self, value):
 		self._value = value
 
