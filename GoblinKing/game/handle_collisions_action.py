@@ -11,19 +11,20 @@ class HandleCollisionsAction(Action):
 
     def _handle_ground_collisions(self, cast):
         player = cast.first_actor("player")
-        items = cast.get_actors("items")
-        
-        #TODO: Add logic for picking up an items
-        # it need to involve identifing which object
-        # is being picked up.
-            
+        items = cast.first_actor("items")
+        # Check for collision with items
+        item_hit_list = arcade.check_for_collision_with_list(player,
+            items)
+        self._pick_up_item(cast, item_hit_list)
         
 
   
                 
-    def _pick_up_item(self,cast,item):
+    def _pick_up_item(self,cast,item_hit_list):
         #TODO: add item point value to player score
         # Remove item from the items list
-        cast.get_actors("items").remove(item)
-        #Add the item to the plyers item list, not sure what this will be used for yet.
-        cast.first_actor("player").pick_up_item(item)
+        for item in item_hit_list:
+            print("item picked up!")
+            cast.first_actor("items").remove(item)
+            #Add the item to the plyers item list, not sure what this will be used for yet.
+            cast.first_actor("player").pick_up_item(item)
