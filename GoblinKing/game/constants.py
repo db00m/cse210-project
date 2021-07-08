@@ -16,6 +16,8 @@ SCALE = 0.2
 ITEMS = 10
 GEM = []
 GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
+COMPLETION_SCORE = 500
+SCORE_DECREASE = 50
 
 # ANIMAL CONSTANTS
 PLAYER_JUMP_SPEED = 15
