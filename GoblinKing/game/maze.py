@@ -87,6 +87,8 @@ class Maze(arcade.SpriteList):
 					grid[row].append(TILE_CRATE)
 				else:
 					grid[row].append(TILE_CRATE)
+		grid[-1][-2] = TILE_EMPTY
+		grid[1][0] = TILE_EMPTY
 		return grid
 	
 	def make_maze_depth_first(self,maze_width, maze_height):
