@@ -49,6 +49,7 @@ class GameScene(Scene):
         # Add items to list and place them on the maze
         for _ in range(5):
                 hazard = Item()
+                hazard.set_scale(0.75)
                 placed = False
                 hazard.set_texture(constants.FIRE) # In the future their will be diffrent types of gems/items
                 while not placed:
