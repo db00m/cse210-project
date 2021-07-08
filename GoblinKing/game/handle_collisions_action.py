@@ -7,13 +7,23 @@ class HandleCollisionsAction(Action):
         super().__init__(engine)
 
     def execute(self, cast, cue, callback):
-        super()._engine.update()
         self._handle_ground_collisions(cast)
 
     def _handle_ground_collisions(self, cast):
-        player = cast.first_actor("players")
-        grounds = cast.get_actors("grounds")
-        for ground in grounds:
-            if arcade.check_for_collision(player, ground):
-                player.bottom = ground.top
-                player.walk()    
+        player = cast.first_actor("player")
+        items = cast.get_actors("items")
+        
+        #TODO: Add logic for picking up an items
+        # it need to involve identifing which object
+        # is being picked up.
+            
+        
+
+  
+                
+    def _pick_up_item(self,cast,item):
+        #TODO: add item point value to player score
+        # Remove item from the items list
+        cast.get_actors("items").remove(item)
+        #Add the item to the plyers item list, not sure what this will be used for yet.
+        cast.first_actor("player").pick_up_item(item)

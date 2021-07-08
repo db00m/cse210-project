@@ -10,8 +10,10 @@ from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
 from game.move_actors_action import MoveActorsAction
 from game.maze import Maze
+from game.item import Item
 from game import constants
 import arcade
+import random
 
 
 class GameScene(Scene):
@@ -22,6 +24,24 @@ class GameScene(Scene):
         player = Player()
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
         cast = Cast()
+
+        items = arcade.SpriteList()
+        for _ in range(constants.ITEMS):
+                item = Item()
+                placed = False
+                item.set_texture(constants.GEM[0]) # In the future their will be diffrent types of gems
+                while not placed:
+                        # Randomly position
+                        item.center_x = random.randrange(constants.MAZE_WIDTH * 128 * constants.SCALE)
+                        item.center_y = random.randrange(constants.MAZE_HEIGHT * 128 * constants.SCALE)
+                        
+                        # Are we in a wall?
+                        walls_hit = arcade.check_for_collision_with_list(item, maze)
+                        if len(walls_hit) == 0:
+                                # Not in a wall! Success!
+                                placed = True
+                items.append(item)
+        
         timer = Timer()
         score = Score()
         
@@ -29,6 +49,16 @@ class GameScene(Scene):
         cast.add_actor("player", player)
         cast.add_actor("timer", timer)
         cast.add_actor("score", score)
+        cast.add_actor("items", items)
+
+        timer = Timer()
+        score = Score()
+        
+        cast.add_actor("walls", maze)
+        cast.add_actor("player", player)
+        cast.add_actor("timer", timer)
+        cast.add_actor("score", score)
+
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
