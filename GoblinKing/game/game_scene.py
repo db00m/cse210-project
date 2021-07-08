@@ -3,8 +3,8 @@ from core.cue import Cue
 from core.scene import Scene
 from core.script import Script
 from game.player import Player
-from game.ground import Ground
-from game.instructions import Instruction
+from game.timer import Timer
+from game.score import Score
 from game.handle_collisions_action import HandleCollisionsAction
 from game.control_actors_action import ControlActorsAction
 from game.draw_actors_action import DrawActorsAction
@@ -22,10 +22,13 @@ class GameScene(Scene):
         player = Player()
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
         cast = Cast()
-        
+        timer = Timer()
+        score = Score()
         
         cast.add_actor("walls", maze)
         cast.add_actor("player", player)
+        cast.add_actor("timer", timer)
+        cast.add_actor("score", score)
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
