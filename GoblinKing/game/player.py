@@ -6,8 +6,8 @@ class Player(Actor):
 
     def __init__(self):
         super().__init__()
-        self.center_x = 100
-        self.center_y = 100
+        self.center_x = 50
+        self.center_y = 50
         self.texture = constants.PLAYER_IDLE
         self.scale = constants.SCALE
         self._change_x = 0
@@ -28,8 +28,8 @@ class Player(Actor):
             self.change_y = -constants.MOVE_SPEED
         
     def hit(self):
-        self.change_y = -self.change_y * 3
-        self.change_x = -self.change_x * 3
+        self.change_y *= -1
+        self.change_x *= -1
         self._was_hit = True
         
     def update(self):
