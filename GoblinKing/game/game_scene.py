@@ -29,9 +29,21 @@ class GameScene(Scene):
         items = arcade.SpriteList()
         # Add items to list and place them on the maze
         
-        def place_objects(texture, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH,upper=constants.SCREEN_HEIGHT,lower=0):
+        # For some strange reason, this function is only recognized within __init__ and cannot be made a method of GameScene.
+        def place_objects(texture, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH-20,upper=constants.SCREEN_HEIGHT-20,lower=0):
+                """ This function places items and random locations on the map.
                 
-                #TODO: put this code in a function so its not so repetative        
+                args:
+                        texture: A loaded sprite texture
+                        number(Int): Number of items to be placed
+                        scale(Float): Sprite scale number
+                        left(Int):  The left boundry for placing items (must be > right)
+                        right(Int): The right boundry for placing items
+                        upper(Int): The upper boundry for placing items
+                        lower(Int): The lower boundry for placing items
+                return -> (arcade.SprtieList): a list of the placed items
+                """
+                
                 objects = arcade.SpriteList()
                 # Add items to list and place them on the maze
                 for _ in range(number):
@@ -46,13 +58,15 @@ class GameScene(Scene):
                                 
                                 # Are we in a wall?
                                 walls_hit = arcade.check_for_collision_with_list(object, maze)
+                                self_hit = arcade.check_for_collision_with_list(object, objects)
                                 if len(walls_hit) == 0:
                                         # Not in a wall! Success!
-                                        print("fire placed")
-                                        placed = True
+                                        if len(self_hit) == 0:
+                                                placed = True
                         objects.append(object)
                 return objects
-
+        
+        # TODO Once we have the Gems figured out, this code should disapear and place_ojects() should be called.
         for _ in range(constants.ITEMS):
                 item = Item()
                 placed = False
@@ -69,7 +83,8 @@ class GameScene(Scene):
                                 placed = True
                 items.append(item)
                 
-        hazards = place_objects(constants.FIRE, 10,left=400,lower=400)        
+        hazards = place_objects(constants.FIRE, 10,left=300,lower=300)
+        waters = place_objects(constants.WATER, 10, scale=constants.WATER_SCALE, right=300, upper=300)
 
 
         
@@ -81,7 +96,8 @@ class GameScene(Scene):
         cast.add_actor("timer", timer)
         cast.add_actor("score", score)
         cast.add_actor("items", items)
-        cast.add_actor("hazards", hazards)
+        cast.add_actor("items", hazards)
+        cast.add_actor("items", waters)
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
@@ -102,3 +118,8 @@ class GameScene(Scene):
         # set the scene
         self.set_cast(cast)
         self.set_script(script)
+        
+        
+        
+
+                

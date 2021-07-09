@@ -17,6 +17,8 @@ ITEMS = 5
 GEM = []
 GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
 FIRE = arcade.load_texture("local_resources/fire.gif")
+WATER = arcade.load_texture("local_resources/water.png")
+WATER_SCALE = 0.02
 COMPLETION_SCORE = 500
 SCORE_DECREASE = 50
 ITEM_CONSTANT = 128 * SCALE

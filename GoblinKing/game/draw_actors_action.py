@@ -26,13 +26,10 @@ class DrawActorsAction(Action):
 
     def _draw_objects(self, cast):
         items = cast.get_actors("items")
-        hazards = cast.first_actor("hazards")
-        #draw items
-        for item in items:
-            item.draw()
-        # draw hazards
-        for hazard in hazards:
-            hazard.draw()
+        
+        for item_list in items:
+            for item in item_list:
+                item.draw()
         
 
     def _draw_timer(self, cast):
