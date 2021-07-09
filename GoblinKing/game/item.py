@@ -6,7 +6,7 @@ class Item(Actor):
 		super().__init__()
 		self.scale = 0.5
 		self._value = 0
-
+		self._type = "item"
 		
 		
 	def set_scale(self, scale):
@@ -21,4 +21,10 @@ class Item(Actor):
 		
 	def get_value(self):
 		return self._value
+	
+	def set_type(self,type):
+		self._type = type
+	
+	def get_type(self):
+		return self._type
 	

@@ -30,7 +30,7 @@ class GameScene(Scene):
         # Add items to list and place them on the maze
         
         # For some strange reason, this function is only recognized within __init__ and cannot be made a method of GameScene.
-        def place_objects(texture, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH-20,upper=constants.SCREEN_HEIGHT-20,lower=0):
+        def place_objects(texture, type, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH-20,upper=constants.SCREEN_HEIGHT-20,lower=0):
                 """ This function places items and random locations on the map.
                 
                 args:
@@ -49,6 +49,7 @@ class GameScene(Scene):
                 for _ in range(number):
                         object = Item()
                         object.set_scale(scale)
+                        object.set_type(type)
                         placed = False
                         object.set_texture(texture) # In the future their will be diffrent types of gems/items
                         while not placed:
@@ -83,8 +84,8 @@ class GameScene(Scene):
                                 placed = True
                 items.append(item)
                 
-        hazards = place_objects(constants.FIRE, 10,left=300,lower=300)
-        waters = place_objects(constants.WATER, 10, scale=constants.WATER_SCALE, right=300, upper=300)
+        hazards = place_objects(constants.FIRE, "fire",10,left=300,lower=300)
+        waters = place_objects(constants.WATER, "water",10, scale=constants.WATER_SCALE, right=300, upper=300)
 
 
         
