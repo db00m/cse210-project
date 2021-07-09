@@ -19,7 +19,7 @@ class HandleCollisionsAction(Action):
         gem_hit_list = arcade.check_for_collision_with_list(player,
             gems)
         if not len(gem_hit_list) == 0:
-            self._pick_up_item(gems, gem_hit_list, player)
+            self._pick_up_item(gems, gem_hit_list, player, cast)
         
         hazard_hit_list = arcade.check_for_collision_with_list(player,
             hazards)
@@ -28,11 +28,11 @@ class HandleCollisionsAction(Action):
         
         waters_hit_list = arcade.check_for_collision_with_list(player, waters)
         if not len(waters_hit_list) == 0:
-            self._pick_up_item(waters, waters_hit_list, player)
+            self._pick_up_item(waters, waters_hit_list, player, cast)
 
   
                 
-    def _pick_up_item(self,items,item_hit_list, player):
+    def _pick_up_item(self,items,item_hit_list, player, cast):
         #TODO: add item point value to player score
         # Remove item from the items list
         score = cast.first_actor("score")
