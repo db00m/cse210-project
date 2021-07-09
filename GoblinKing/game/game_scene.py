@@ -29,12 +29,14 @@ class GameScene(Scene):
         items = arcade.SpriteList()
         for _ in range(constants.ITEMS):
                 item = Item()
+                item_type = random.randint(1, 4)
+                item._value = item_type * 10
+                item.set_texture(constants.GEM[item_type - 1])
                 placed = False
-                item.set_texture(constants.GEM[0]) # In the future their will be diffrent types of gems/items
                 while not placed:
                         # Randomly position
-                        item.center_x = random.randrange((constants.MAZE_WIDTH - 10) * constants.ITEM_CONSTANT)
-                        item.center_y = random.randrange(10 * constants.ITEM_CONSTANT,(constants.MAZE_HEIGHT) * constants.ITEM_CONSTANT)
+                        item.center_x = random.randrange((constants.MAZE_WIDTH) * constants.ITEM_CONSTANT)
+                        item.center_y = random.randrange((constants.MAZE_HEIGHT) * constants.ITEM_CONSTANT)
                         
                         # Are we in a wall?
                         walls_hit = arcade.check_for_collision_with_list(item, maze)

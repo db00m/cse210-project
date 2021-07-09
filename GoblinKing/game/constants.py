@@ -13,9 +13,13 @@ LEFT = "l"
 UP = "u"
 DOWN = "d"
 SCALE = 0.2
-ITEMS = 5
+ITEMS = 7
 GEM = []
 GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
+GEM.append(arcade.load_texture(":resources:images/items/gemGreen.png"))
+GEM.append(arcade.load_texture(":resources:images/items/gemRed.png"))
+GEM.append(arcade.load_texture(":resources:images/items/gemBlue.png"))
+#GEM.append(arcade.load_texture("local_resources/stopwatch.png"))
 FIRE = arcade.load_texture("local_resources/fire.gif")
 COMPLETION_SCORE = 500
 SCORE_DECREASE = 50
