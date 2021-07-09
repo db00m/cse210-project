@@ -10,7 +10,7 @@ class DrawActorsAction(Action):
     def execute(self, cast, cue, callback):
         self._draw_maze(cast)
         self._draw_player(cast)
-        self._draw_items(cast)
+        self._draw_objects(cast)
         self._draw_timer(cast)
         self._draw_score(cast)
         
@@ -24,10 +24,13 @@ class DrawActorsAction(Action):
         player[0].draw() #There is only one
     
 
-    def _draw_items(self, cast):
+    def _draw_objects(self, cast):
         items = cast.get_actors("items")
-        for item in items:
-            item.draw()
+        
+        for item_list in items:
+            for item in item_list:
+                item.draw()
+        
 
     def _draw_timer(self, cast):
         timer = cast.get_actors("timer")
@@ -38,4 +41,5 @@ class DrawActorsAction(Action):
         score = cast.get_actors("score")
         output = f"Score: {score[0].score}"
         arcade.draw_text(output, score[0].center_x, score[0].center_y, arcade.color.WHITE, 16)
+        
 
