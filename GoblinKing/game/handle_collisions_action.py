@@ -35,9 +35,12 @@ class HandleCollisionsAction(Action):
     def _pick_up_item(self,items,item_hit_list, player):
         #TODO: add item point value to player score
         # Remove item from the items list
+        score = cast.first_actor("score")
         for item in item_hit_list:
             print("item picked up!")
             items.remove(item)
+            score.add_score(item._value)
+
             #Add the item to the plyers item list, not sure what this will be used for yet.
             player.pick_up_item(item)
             
