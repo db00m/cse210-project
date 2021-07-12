@@ -26,6 +26,8 @@ class ControlActorsAction(Action):
             elif key == arcade.key.LEFT:
                 player.walk(constants.LEFT)
                 
+
+                
         # If a key is released, this code stops moving the player:
         elif cue.get_name() == Cue.ON_KEY_RELEASE:
             player.stop()

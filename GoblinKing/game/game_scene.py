@@ -21,16 +21,16 @@ class GameScene(Scene):
     def __init__(self):
         
         # create the cast
+        water_list = arcade.SpriteList()
         player = Player()
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
-        cast = Cast()
 
         # Create Items list
         items = arcade.SpriteList()
         # Add items to list and place them on the maze
         
         # For some strange reason, this function is only recognized within __init__ and cannot be made a method of GameScene.
-        def place_objects(texture, type, number,scale=0.75,left=25,right=600,upper=600,lower=25):
+        def place_objects(texture, type, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH,upper=constants.SCREEN_HEIGHT,lower=0):
                 """ This function places items and random locations on the map.
                 
                 args:
@@ -67,6 +67,7 @@ class GameScene(Scene):
                         objects.append(object)
                 return objects
         
+        
         # TODO Once we have the Gems figured out, this code should disapear and place_ojects() should be called.
         for _ in range(constants.ITEMS):
                 item = Item()
@@ -85,23 +86,31 @@ class GameScene(Scene):
                                 # Not in a wall! Success!
                                 placed = True
                 items.append(item)
-                
-        hazards = place_objects(constants.FIRE, "fire",3, scale=0.05, left=300,lower=300)
+
+        #Place fire:
+        hazards = place_objects(
+                constants.FIRE, 
+                "fire",
+                3, 
+                scale=0.05,
+                left=300,
+                lower=300
+        )
+        #Place water:
         waters = place_objects(
                 constants.WATER, 
                 "water",
-                3, 
+                2, 
                 scale=constants.WATER_SCALE, 
                 right=300,
                 lower=150,
                 upper=450
         )
 
-
-        
         timer = Timer()
         score = Score()
-        
+        # Fill the cast
+        cast = Cast()
         cast.add_actor("walls", maze)
         cast.add_actor("player", player)
         cast.add_actor("timer", timer)

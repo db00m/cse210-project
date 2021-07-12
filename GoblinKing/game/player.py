@@ -1,5 +1,6 @@
 from core.actor import Actor
 from game import constants
+import arcade
 
 
 class Player(Actor):
@@ -12,8 +13,9 @@ class Player(Actor):
         self.scale = constants.SCALE
         self._change_x = 0
         self.change_y = 0
-        self._items = []
+        self._items = arcade.SpriteList()
         self._was_hit = False
+        self._water = 0
 
 
     
@@ -34,10 +36,9 @@ class Player(Actor):
         
     def update(self):
         self._update_position()
+        self._update_item_list()
         self._check_win()
         
-        
-
     def _update_position(self):
         self.center_x += self.change_x
         self.center_y += self.change_y
@@ -45,10 +46,28 @@ class Player(Actor):
             self.change_x = 0
             self.change_y = 0
             self._was_hit = False
-        
+
+    def _update_item_list(self):
+        for i in range(len(self._items)):
+            item = self._items[i]
+            item.center_x = 30 * i + 10
+            item.center_y = 13
+            item.scale = constants.WATER_SCALE/2
+            
     def pick_up_item(self, item):
-        self._items.append(item)
+        if item.get_type() == "water":
+            self._items.append(item)
+            self._water += 1
+            
+
+    def has_water(self):
+        return self._water > 0
         
+    def use_water(self):
+        self._water -= 1
+        return self._items.pop()
+        
+
     def get_items(self):
         return self._items
 
@@ -56,3 +75,4 @@ class Player(Actor):
         if self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH:
             print("You Win!")
 
+            
