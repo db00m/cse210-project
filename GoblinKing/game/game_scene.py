@@ -20,7 +20,11 @@ import random
 class GameScene(Scene):
 
     def __init__(self):
+        self._timer = Timer()
+        self._score = Score()
+                
         self.set_scene()
+        
                 
     def set_scene(self):
         
@@ -95,7 +99,7 @@ class GameScene(Scene):
         hazards = place_objects(
                 constants.FIRE, 
                 "fire",
-                3, 
+                10, 
                 scale=0.05,
                 left=300,
                 lower=300
@@ -104,24 +108,25 @@ class GameScene(Scene):
         waters = place_objects(
                 constants.WATER, 
                 "water",
-                2, 
+                10, 
                 scale=constants.WATER_SCALE, 
                 right=300,
-                lower=150,
+                lower=0,
                 upper=450
         )
-
-        timer = Timer()
-        score = Score()
+                
+        self._cast = Cast()
+                
+        self._cast.add_actor("timer", self._timer)
+        self._cast.add_actor("score", self._score)
         # Fill the cast
-        cast = Cast()
-        cast.add_actor("walls", maze)
-        cast.add_actor("player", player)
-        cast.add_actor("timer", timer)
-        cast.add_actor("score", score)
-        cast.add_actor("items", items)
-        cast.add_actor("items", hazards)
-        cast.add_actor("items", waters)
+        
+        self._cast.add_actor("walls", maze)
+        self._cast.add_actor("player", player)
+
+        self._cast.add_actor("items", items)
+        self._cast.add_actor("items", hazards)
+        self._cast.add_actor("items", waters)
                 
         
         engine = arcade.PhysicsEngineSimple(player, maze)
@@ -143,7 +148,7 @@ class GameScene(Scene):
         
         
         # set the scene
-        self.set_cast(cast)
+        self.set_cast(self._cast)
         self.set_script(script)
         
         
