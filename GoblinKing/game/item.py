@@ -7,7 +7,7 @@ class Item(Actor):
 		self.scale = 0.5
 		self._value = 0
 		self._type = "item"
-		
+		self.is_static = True
 		
 	def set_scale(self, scale):
 		self.scale = scale

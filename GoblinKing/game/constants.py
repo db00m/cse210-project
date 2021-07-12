@@ -2,7 +2,7 @@ import arcade
 
 # GAME CONSTANTS
 SCREEN_HEIGHT = 600
-SCREEN_WIDTH = 600
+SCREEN_WIDTH = 607
 CENTER_X = SCREEN_WIDTH / 2
 CENTER_Y = SCREEN_HEIGHT / 2
 MAZE_WIDTH = 20
@@ -13,14 +13,14 @@ LEFT = "l"
 UP = "u"
 DOWN = "d"
 SCALE = 0.2
-ITEMS = 7
+ITEMS = 5
 GEM = []
 GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemGreen.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemRed.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemBlue.png"))
 #GEM.append(arcade.load_texture("local_resources/stopwatch.png"))
-FIRE = arcade.load_texture("local_resources/fire.gif")
+FIRE = arcade.load_texture("local_resources/fire.png")
 WATER = arcade.load_texture("local_resources/water.png")
 WATER_SCALE = 0.02
 COMPLETION_SCORE = 500

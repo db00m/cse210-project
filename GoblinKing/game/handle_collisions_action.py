@@ -38,7 +38,8 @@ class HandleCollisionsAction(Action):
         score = cast.first_actor("score")
         for item in item_hit_list:
             print("item picked up!")
-            items.remove(item)
+            if item.get_type() == "item":
+                items.remove(item)
             score.add_score(item._value)
 
             #Add the item to the plyers item list, not sure what this will be used for yet.
@@ -47,4 +48,8 @@ class HandleCollisionsAction(Action):
     def _encounter_hazard(self,cast,hazard_hit_list):
         player = cast.first_actor("player")
         for hazard in hazard_hit_list:
-            player.hit()
+            if player.has_water():
+                cast.get_actors("items")[1].remove(hazard)
+                cast.get_actors("items")[2].remove(player.use_water())
+            else:
+                player.hit()

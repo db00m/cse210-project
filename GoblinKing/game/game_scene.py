@@ -21,16 +21,16 @@ class GameScene(Scene):
     def __init__(self):
         
         # create the cast
+        water_list = arcade.SpriteList()
         player = Player()
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
-        cast = Cast()
 
         # Create Items list
         items = arcade.SpriteList()
         # Add items to list and place them on the maze
         
         # For some strange reason, this function is only recognized within __init__ and cannot be made a method of GameScene.
-        def place_objects(texture, type, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH-20,upper=constants.SCREEN_HEIGHT-20,lower=0):
+        def place_objects(texture, type, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH,upper=constants.SCREEN_HEIGHT,lower=0):
                 """ This function places items and random locations on the map.
                 
                 args:
@@ -55,7 +55,7 @@ class GameScene(Scene):
                         while not placed:
                                 # Randomly position
                                 object.center_x = random.randrange(left, right)
-                                object.center_y = random.randrange(lower, upper+100)
+                                object.center_y = random.randrange(lower, upper)
                                 
                                 # Are we in a wall?
                                 walls_hit = arcade.check_for_collision_with_list(object, maze)
@@ -66,6 +66,7 @@ class GameScene(Scene):
                                                 placed = True
                         objects.append(object)
                 return objects
+        
         
         # TODO Once we have the Gems figured out, this code should disapear and place_ojects() should be called.
         for _ in range(constants.ITEMS):
@@ -85,15 +86,31 @@ class GameScene(Scene):
                                 # Not in a wall! Success!
                                 placed = True
                 items.append(item)
-                
-        hazards = place_objects(constants.FIRE, "fire",10,left=300,lower=300)
-        waters = place_objects(constants.WATER, "water",10, scale=constants.WATER_SCALE, right=300, upper=300)
 
+        #Place fire:
+        hazards = place_objects(
+                constants.FIRE, 
+                "fire",
+                3, 
+                scale=0.05,
+                left=300,
+                lower=300
+        )
+        #Place water:
+        waters = place_objects(
+                constants.WATER, 
+                "water",
+                2, 
+                scale=constants.WATER_SCALE, 
+                right=300,
+                lower=150,
+                upper=450
+        )
 
-        
         timer = Timer()
         score = Score()
-        
+        # Fill the cast
+        cast = Cast()
         cast.add_actor("walls", maze)
         cast.add_actor("player", player)
         cast.add_actor("timer", timer)
@@ -101,6 +118,7 @@ class GameScene(Scene):
         cast.add_actor("items", items)
         cast.add_actor("items", hazards)
         cast.add_actor("items", waters)
+                
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
