@@ -10,7 +10,8 @@ class Timer(Actor):
         self.center_y = constants.SCREEN_HEIGHT - 30
         self.start_time = time.time()
         self.stop_time = 0.0
-        self.elapsed_time = ""
+        self.elapsed_time = 0
+        self.display_time = ""
     
     # Will be called when the game starts
     def start_timer(self):
@@ -27,13 +28,21 @@ class Timer(Actor):
     # Will be called from update
     def calculate_time(self):
         current_time = time.time()
-        elapsed = int(current_time - self.start_time)
-        if elapsed < 60:
-            self.elapsed_time = f"{elapsed}"
-        elif elapsed >= 60:
-            minutes = elapsed // 60
-            seconds = elapsed % 60
+        self.elapsed_time = int(current_time - self.start_time)
+        if self.elapsed_time < 60:
+            self.display_time = f"{self.elapsed_time}"
+        elif self.elapsed_time >= 60:
+            minutes = self.elapsed_time // 60
+            seconds = self.elapsed_time % 60
             if seconds <= 9:
-                self.elapsed_time = f"{minutes}:0{seconds}"
+                self.display_time = f"{minutes}:0{seconds}"
             else:
-                self.elapsed_time = f"{minutes}:{seconds}"
+                self.display_time = f"{minutes}:{seconds}"
+
+    # Will be called when a time powerup is picked up
+    def reduce_time(self, amount):
+        current_time = time.time()
+        self.start_time = self.start_time + amount
+        if self.start_time > current_time:
+            self.start_time = current_time
+        self.calculate_time()

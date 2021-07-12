@@ -79,8 +79,14 @@ class GameScene(Scene):
         # TODO Once we have the Gems figured out, this code should disapear and place_ojects() should be called.
         for _ in range(constants.ITEMS):
                 item = Item()
-                item_type = random.randint(1, 4)
-                item._value = item_type * 10
+                gem_or_time = random.randint(1, 3)
+                if gem_or_time == 3:
+                        item_type = 5
+                        item._value = 1
+                        item.scale = 0.02
+                else:
+                        item_type = random.randint(1, 4)
+                        item._value = item_type * 10
                 item.set_texture(constants.GEM[item_type - 1])
                 placed = False
                 while not placed:
