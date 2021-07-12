@@ -73,7 +73,7 @@ class GameScene(Scene):
                 gem_or_time = random.randint(1, 3)
                 if gem_or_time == 3:
                         item_type = 5
-                        item._value = item_type * 600
+                        item._value = 1
                         item.scale = 0.02
                 else:
                         item_type = random.randint(1, 4)
