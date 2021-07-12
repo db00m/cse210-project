@@ -30,7 +30,7 @@ class GameScene(Scene):
         # Add items to list and place them on the maze
         
         # For some strange reason, this function is only recognized within __init__ and cannot be made a method of GameScene.
-        def place_objects(texture, type, number,scale=0.75,left=0,right=constants.SCREEN_WIDTH-20,upper=constants.SCREEN_HEIGHT-20,lower=0):
+        def place_objects(texture, type, number,scale=0.75,left=25,right=600,upper=600,lower=25):
                 """ This function places items and random locations on the map.
                 
                 args:
@@ -55,7 +55,7 @@ class GameScene(Scene):
                         while not placed:
                                 # Randomly position
                                 object.center_x = random.randrange(left, right)
-                                object.center_y = random.randrange(lower, upper+100)
+                                object.center_y = random.randrange(lower, upper)
                                 
                                 # Are we in a wall?
                                 walls_hit = arcade.check_for_collision_with_list(object, maze)
@@ -86,8 +86,16 @@ class GameScene(Scene):
                                 placed = True
                 items.append(item)
                 
-        hazards = place_objects(constants.FIRE, "fire",10,left=300,lower=300)
-        waters = place_objects(constants.WATER, "water",10, scale=constants.WATER_SCALE, right=300, upper=300)
+        hazards = place_objects(constants.FIRE, "fire",3, scale=0.05, left=300,lower=300)
+        waters = place_objects(
+                constants.WATER, 
+                "water",
+                3, 
+                scale=constants.WATER_SCALE, 
+                right=300,
+                lower=150,
+                upper=450
+        )
 
 
         
@@ -101,6 +109,7 @@ class GameScene(Scene):
         cast.add_actor("items", items)
         cast.add_actor("items", hazards)
         cast.add_actor("items", waters)
+                
         
         engine = arcade.PhysicsEngineSimple(player, maze)
 
