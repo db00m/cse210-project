@@ -37,7 +37,8 @@ class Player(Actor):
     def update(self):
         self._update_position()
         self._update_item_list()
-        self._check_win()
+        self.check_win()
+            
         
     def _update_position(self):
         self.center_x += self.change_x
@@ -71,8 +72,7 @@ class Player(Actor):
     def get_items(self):
         return self._items
 
-    def _check_win(self):
-        if self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH:
-            print("You Win!")
+    def check_win(self):
+        return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
 
             

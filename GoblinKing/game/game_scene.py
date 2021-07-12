@@ -12,6 +12,7 @@ from game.move_actors_action import MoveActorsAction
 from game.maze import Maze
 from game.item import Item
 from game import constants
+from game.check_conditions_action import CheckConditionsAction
 import arcade
 import random
 
@@ -19,6 +20,9 @@ import random
 class GameScene(Scene):
 
     def __init__(self):
+        self.set_scene()
+                
+    def set_scene(self):
         
         # create the cast
         water_list = arcade.SpriteList()
@@ -127,6 +131,7 @@ class GameScene(Scene):
         control_actors_action = ControlActorsAction(engine)
         move_actors_action = MoveActorsAction(engine)
         handel_collisions = HandleCollisionsAction(engine)
+        check_conditions = CheckConditionsAction(engine)
 
         script = Script()
         script.add_action(Cue.ON_DRAW, draw_actors_action)
@@ -134,6 +139,7 @@ class GameScene(Scene):
         script.add_action(Cue.ON_KEY_RELEASE, control_actors_action)
         script.add_action(Cue.ON_UPDATE, move_actors_action)
         script.add_action(Cue.ON_UPDATE, handel_collisions)
+        script.add_action(Cue.ON_UPDATE, check_conditions)
         
         
         # set the scene

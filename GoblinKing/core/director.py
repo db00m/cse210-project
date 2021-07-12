@@ -9,6 +9,9 @@ class Director(arcade.Window, Action.Callback):
         super().__init__(screen_width, screen_height)
         self._scene = None
         
+    def get_scene(self):
+        return self._scene
+        
     def direct_scene(self, scene):
         self._scene = scene
     
