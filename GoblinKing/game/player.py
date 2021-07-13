@@ -32,8 +32,8 @@ class Player(Actor):
             self.change_y = -constants.MOVE_SPEED
         
     def hit(self):
-        self.change_y *= -1
-        self.change_x *= -1
+        self.change_y *= -5
+        self.change_x *= -5
         self._was_hit = True
         self.lives -= 1
         
