@@ -83,6 +83,7 @@ class GameScene(Scene):
                 item = Item()
                 item_type = random.randint(1, 4)
                 item._value = item_type * 10
+                
                 item.set_texture(constants.GEM[item_type - 1])
                 placed = False
                 while not placed:
