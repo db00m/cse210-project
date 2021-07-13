@@ -17,6 +17,7 @@ class Player(Actor):
         self._items = arcade.SpriteList()
         self._was_hit = False
         self._water = 0
+        self.lives = 3
 
 
     
@@ -34,11 +35,13 @@ class Player(Actor):
         self.change_y *= -1
         self.change_x *= -1
         self._was_hit = True
+        self.lives -= 1
         
     def update(self):
         self._update_position()
         self._update_item_list()
         self.check_win()
+        self._check_death()
             
         
     def get_spray(self):
@@ -78,5 +81,7 @@ class Player(Actor):
 
     def check_win(self):
         return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
-
-            
+    
+    def _check_death(self):
+        if self.lives < 0:
+            print("You are dead.")
