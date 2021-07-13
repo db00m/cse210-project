@@ -83,5 +83,5 @@ class Player(Actor):
         return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
     
     def _check_death(self):
-        if self.lives < 0:
+        if self.lives < 1:
             print("You are dead.")
