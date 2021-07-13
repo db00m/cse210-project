@@ -25,6 +25,7 @@ WATER = arcade.load_texture("local_resources/water.png")
 WATER_SPRAY = arcade.load_texture("local_resources/water_spray.png")
 WATER_SCALE = 0.02
 COMPLETION_SCORE = 500
+TIME_REDUCE = 30
 SCORE_DECREASE = 50
 ITEM_CONSTANT = 128 * SCALE
 

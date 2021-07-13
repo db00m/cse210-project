@@ -1,4 +1,5 @@
 from core.action import Action
+from game import constants
 import arcade
 
 class HandleCollisionsAction(Action):
@@ -42,11 +43,16 @@ class HandleCollisionsAction(Action):
         #TODO: add item point value to player score
         # Remove item from the items list
         score = cast.first_actor("score")
+        timer = cast.first_actor("timer")
         for item in item_hit_list:
-            if item.get_type() == "item":
-                items.remove(item)
-            score.add_score(item._value)
 
+            if item.get_type() == "item":
+                if item._value == 1:
+                    timer.reduce_time(item._value * constants.TIME_REDUCE)
+                else:
+                    score.add_score(item._value)
+                items.remove(item)
+                
             #Add the item to the plyers item list, not sure what this will be used for yet.
             player.pick_up_item(item)
             
