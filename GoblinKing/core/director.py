@@ -5,8 +5,8 @@ from core.cue import Cue
 
 class Director(arcade.Window, Action.Callback):
     
-    def __init__(self, screen_width, screen_height):
-        super().__init__(screen_width, screen_height)
+    def __init__(self, screen_width, screen_height, screen_title):
+        super().__init__(screen_width, screen_height, screen_title)
         self._scene = None
         arcade.set_background_color(arcade.color.BONDI_BLUE)
         

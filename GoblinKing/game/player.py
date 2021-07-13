@@ -32,8 +32,8 @@ class Player(Actor):
             self.change_y = -constants.MOVE_SPEED
         
     def hit(self):
-        self.change_y *= -1
-        self.change_x *= -1
+        self.change_y *= -5
+        self.change_x *= -5
         self._was_hit = True
         self.lives -= 1
         
@@ -83,5 +83,5 @@ class Player(Actor):
         return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
     
     def _check_death(self):
-        if self.lives < 0:
+        if self.lives < 1:
             print("You are dead.")
