@@ -22,6 +22,7 @@ GEM.append(arcade.load_texture(":resources:images/items/gemBlue.png"))
 #GEM.append(arcade.load_texture("local_resources/stopwatch.png"))
 FIRE = arcade.load_texture("local_resources/fire.png")
 WATER = arcade.load_texture("local_resources/water.png")
+WATER_SPRAY = arcade.load_texture("local_resources/water_spray.png")
 WATER_SCALE = 0.02
 COMPLETION_SCORE = 500
 SCORE_DECREASE = 50

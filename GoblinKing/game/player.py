@@ -5,13 +5,14 @@ import arcade
 
 class Player(Actor):
 
-    def __init__(self):
+    def __init__(self, water_spray):
         super().__init__()
         self.center_x = 50
         self.center_y = 50
+        self._water_spray = water_spray
         self.texture = constants.PLAYER_IDLE
-        self.scale = constants.SCALE
-        self._change_x = 0
+        self.scale = 0.25
+        self.change_x = 0
         self.change_y = 0
         self._items = arcade.SpriteList()
         self._was_hit = False
@@ -40,6 +41,9 @@ class Player(Actor):
         self.check_win()
             
         
+    def get_spray(self):
+        return self._water_spray
+        
     def _update_position(self):
         self.center_x += self.change_x
         self.center_y += self.change_y
@@ -47,6 +51,7 @@ class Player(Actor):
             self.change_x = 0
             self.change_y = 0
             self._was_hit = False
+        self._water_spray.move(self)
 
     def _update_item_list(self):
         for i in range(len(self._items)):
@@ -68,7 +73,6 @@ class Player(Actor):
         self._water -= 1
         return self._items.pop()
         
-
     def get_items(self):
         return self._items
 

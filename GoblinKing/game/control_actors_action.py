@@ -26,11 +26,18 @@ class ControlActorsAction(Action):
             elif key == arcade.key.LEFT:
                 player.walk(constants.LEFT)
                 
+            if key == arcade.key.SPACE:
+                if player.has_water():
+                    player.get_spray().splash()
+                
 
                 
         # If a key is released, this code stops moving the player:
         elif cue.get_name() == Cue.ON_KEY_RELEASE:
             player.stop()
+            
+            if key == arcade.key.SPACE:
+                player.get_spray().stop()
             
             
 
