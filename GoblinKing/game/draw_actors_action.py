@@ -20,8 +20,10 @@ class DrawActorsAction(Action):
             block.draw()
             
     def _draw_player(self, cast):
-        player = cast.get_actors("player")
-        player[0].draw() #There is only one
+        player = cast.first_actor("player")
+        player.get_spray().draw()
+        player.draw() #There is only one
+        
     
 
     def _draw_objects(self, cast):
@@ -43,3 +45,4 @@ class DrawActorsAction(Action):
         arcade.draw_text(output, score[0].center_x, score[0].center_y, arcade.color.WHITE, 16)
         
 
+        

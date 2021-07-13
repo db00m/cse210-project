@@ -8,6 +8,10 @@ class Director(arcade.Window, Action.Callback):
     def __init__(self, screen_width, screen_height):
         super().__init__(screen_width, screen_height)
         self._scene = None
+        arcade.set_background_color(arcade.color.BONDI_BLUE)
+        
+    def get_scene(self):
+        return self._scene
         
     def direct_scene(self, scene):
         self._scene = scene

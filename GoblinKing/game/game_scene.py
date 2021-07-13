@@ -12,6 +12,8 @@ from game.move_actors_action import MoveActorsAction
 from game.maze import Maze
 from game.item import Item
 from game import constants
+from game.check_conditions_action import CheckConditionsAction
+from game.water_spray import WaterSpray
 import arcade
 import random
 
@@ -19,10 +21,18 @@ import random
 class GameScene(Scene):
 
     def __init__(self):
+        self._timer = Timer()
+        self._score = Score()
+                
+        self.set_scene()
+        
+                
+    def set_scene(self):
         
         # create the cast
         water_list = arcade.SpriteList()
-        player = Player()
+        water_spray = WaterSpray()
+        player = Player(water_spray)
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
 
         # Create Items list
@@ -73,6 +83,7 @@ class GameScene(Scene):
                 item = Item()
                 item_type = random.randint(1, 4)
                 item._value = item_type * 10
+                
                 item.set_texture(constants.GEM[item_type - 1])
                 placed = False
                 while not placed:
@@ -91,7 +102,7 @@ class GameScene(Scene):
         hazards = place_objects(
                 constants.FIRE, 
                 "fire",
-                3, 
+                10, 
                 scale=0.05,
                 left=300,
                 lower=300
@@ -100,24 +111,25 @@ class GameScene(Scene):
         waters = place_objects(
                 constants.WATER, 
                 "water",
-                2, 
+                10, 
                 scale=constants.WATER_SCALE, 
                 right=300,
-                lower=150,
+                lower=0,
                 upper=450
         )
-
-        timer = Timer()
-        score = Score()
+                
+        self._cast = Cast()
+                
+        self._cast.add_actor("timer", self._timer)
+        self._cast.add_actor("score", self._score)
         # Fill the cast
-        cast = Cast()
-        cast.add_actor("walls", maze)
-        cast.add_actor("player", player)
-        cast.add_actor("timer", timer)
-        cast.add_actor("score", score)
-        cast.add_actor("items", items)
-        cast.add_actor("items", hazards)
-        cast.add_actor("items", waters)
+        
+        self._cast.add_actor("walls", maze)
+        self._cast.add_actor("player", player)
+
+        self._cast.add_actor("items", items)
+        self._cast.add_actor("items", hazards)
+        self._cast.add_actor("items", waters)
                 
         
         engine = arcade.PhysicsEngineSimple(player, maze)
@@ -127,6 +139,7 @@ class GameScene(Scene):
         control_actors_action = ControlActorsAction(engine)
         move_actors_action = MoveActorsAction(engine)
         handel_collisions = HandleCollisionsAction(engine)
+        check_conditions = CheckConditionsAction(engine)
 
         script = Script()
         script.add_action(Cue.ON_DRAW, draw_actors_action)
@@ -134,10 +147,11 @@ class GameScene(Scene):
         script.add_action(Cue.ON_KEY_RELEASE, control_actors_action)
         script.add_action(Cue.ON_UPDATE, move_actors_action)
         script.add_action(Cue.ON_UPDATE, handel_collisions)
+        script.add_action(Cue.ON_UPDATE, check_conditions)
         
         
         # set the scene
-        self.set_cast(cast)
+        self.set_cast(self._cast)
         self.set_script(script)
         
         
