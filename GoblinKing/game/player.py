@@ -40,8 +40,6 @@ class Player(Actor):
     def update(self):
         self._update_position()
         self._update_item_list()
-        self.check_win()
-        self._check_death()
             
         
     def get_spray(self):
@@ -82,6 +80,6 @@ class Player(Actor):
     def check_win(self):
         return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
     
-    def _check_death(self):
+    def check_death(self):
         if self.lives < 0:
             print("You are dead.")

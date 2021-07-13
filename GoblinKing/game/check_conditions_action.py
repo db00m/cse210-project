@@ -16,5 +16,7 @@ class CheckConditionsAction(Action):
 		player = cast.first_actor("player")
 		if player.check_win():
 			callback.get_scene().set_scene()
+		elif player.check_death():
+			pass
 				
 				

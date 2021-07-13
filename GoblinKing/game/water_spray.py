@@ -17,8 +17,9 @@ class WaterSpray(Actor):
 			self._splash_time += 1
 			if self._splash_time > 0 and self._splash_time < 20:
 				self.scale += self._grow_rate
+				self._point_list_cache = None
 			else:
-				self.scale = 0.015
+				self.scale = 0.01
 				
 
 	def splash(self):
