@@ -13,6 +13,7 @@ from game.maze import Maze
 from game.item import Item
 from game import constants
 from game.check_conditions_action import CheckConditionsAction
+from game.water_spray import WaterSpray
 import arcade
 import random
 
@@ -30,7 +31,8 @@ class GameScene(Scene):
         
         # create the cast
         water_list = arcade.SpriteList()
-        player = Player()
+        water_spray = WaterSpray()
+        player = Player(water_spray)
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
 
         # Create Items list
@@ -87,6 +89,7 @@ class GameScene(Scene):
                 else:
                         item_type = random.randint(1, 4)
                         item._value = item_type * 10
+
                 item.set_texture(constants.GEM[item_type - 1])
                 placed = False
                 while not placed:

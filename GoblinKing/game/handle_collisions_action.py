@@ -22,11 +22,17 @@ class HandleCollisionsAction(Action):
         if not len(gem_hit_list) == 0:
             self._pick_up_item(gems, gem_hit_list, player, cast)
         
-        hazard_hit_list = arcade.check_for_collision_with_list(player,
+        player_hazard_hit_list = arcade.check_for_collision_with_list(player,
             hazards)
-        if not len(hazard_hit_list) == 0:
-            self._encounter_hazard(cast,hazard_hit_list)
-        
+        water_hazard_hit_list = arcade.check_for_collision_with_list(player.get_spray(),hazards)
+        if not len(player_hazard_hit_list) == 0:
+            self._encounter_hazard(cast,player_hazard_hit_list)
+            
+        if not len(water_hazard_hit_list) == 0:
+            for hazard in water_hazard_hit_list:
+                hazards.remove(hazard)
+                cast.get_actors("items")[2].remove(player.use_water())
+            
         waters_hit_list = arcade.check_for_collision_with_list(player, waters)
         if not len(waters_hit_list) == 0:
             self._pick_up_item(waters, waters_hit_list, player, cast)
@@ -40,7 +46,6 @@ class HandleCollisionsAction(Action):
         timer = cast.first_actor("timer")
         for item in item_hit_list:
 
-            print("item picked up!")
             if item.get_type() == "item":
                 if item._value == 1:
                     timer.reduce_time(item._value * constants.TIME_REDUCE)
@@ -54,8 +59,4 @@ class HandleCollisionsAction(Action):
     def _encounter_hazard(self,cast,hazard_hit_list):
         player = cast.first_actor("player")
         for hazard in hazard_hit_list:
-            if player.has_water():
-                cast.get_actors("items")[1].remove(hazard)
-                cast.get_actors("items")[2].remove(player.use_water())
-            else:
                 player.hit()
