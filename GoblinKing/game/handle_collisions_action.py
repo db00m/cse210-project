@@ -47,7 +47,7 @@ class HandleCollisionsAction(Action):
         for item in item_hit_list:
 
             if item.get_type() == "item":
-                if item._value == 1:
+                if item._value == 10:
                     timer.reduce_time(item._value * constants.TIME_REDUCE)
                 else:
                     score.add_score(item._value)
