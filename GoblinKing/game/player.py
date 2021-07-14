@@ -63,6 +63,9 @@ class Player(Actor):
             item.center_y = 13
             item.scale = constants.WATER_SCALE/2
             
+    def get_lives(self):
+        return self.lives
+            
     def pick_up_item(self, item):
         if item.get_type() == "water":
             self._items.append(item)
@@ -83,5 +86,4 @@ class Player(Actor):
         return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
     
     def _check_death(self):
-        if self.lives < 1:
-            print("You are dead.")
+        return self.lives < 1
