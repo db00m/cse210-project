@@ -49,7 +49,7 @@ class HandleCollisionsAction(Action):
 
             if item.get_type() == "item":
                 if item._value == 10:
-                    timer.reduce_time(item._value * constants.TIME_REDUCE)
+                    timer.reduce_time(constants.TIME_REDUCE)
                 else:
                     gem_count.add_gem()
                     score.add_score(item._value)
