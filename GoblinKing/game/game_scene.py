@@ -14,6 +14,7 @@ from game.item import Item
 from game import constants
 from game.check_conditions_action import CheckConditionsAction
 from game.water_spray import WaterSpray
+from game.gem_count import GemCount
 import arcade
 import random
 
@@ -23,6 +24,7 @@ class GameScene(Scene):
     def __init__(self):
         self._timer = Timer()
         self._score = Score()
+        self._gem_count = GemCount()
                 
         self.set_scene()
         
@@ -128,6 +130,7 @@ class GameScene(Scene):
                 
         self._cast.add_actor("timer", self._timer)
         self._cast.add_actor("score", self._score)
+        self._cast.add_actor("gem count", self._gem_count)
         # Fill the cast
         
         self._cast.add_actor("walls", maze)
