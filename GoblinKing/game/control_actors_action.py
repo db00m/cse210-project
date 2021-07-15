@@ -17,13 +17,13 @@ class ControlActorsAction(Action):
         # If a key is pressed, this code moves the player accordingly:
         if cue.get_name() == Cue.ON_KEY_PRESS:
             
-            if key == arcade.key.UP:
+            if key == arcade.key.UP or key == arcade.key.W:
                 player.walk(constants.UP)
-            elif key == arcade.key.DOWN:
+            elif key == arcade.key.DOWN or key == arcade.key.S:
                 player.walk(constants.DOWN)
-            elif key == arcade.key.RIGHT:
+            elif key == arcade.key.RIGHT or key == arcade.key.D:
                 player.walk(constants.RIGHT)
-            elif key == arcade.key.LEFT:
+            elif key == arcade.key.LEFT or key == arcade.key.A:
                 player.walk(constants.LEFT)
                 
             if key == arcade.key.SPACE:

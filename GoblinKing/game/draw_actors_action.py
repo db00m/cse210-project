@@ -1,4 +1,5 @@
 from core.action import Action
+from game import constants
 import arcade
 
 
@@ -53,7 +54,7 @@ class DrawActorsAction(Action):
     def _draw_gem_count(self, cast):
         gem_count = cast.first_actor("gem count")
         count = gem_count.get_count()
-        output = f"{count}/20"
+        output = f"{count}/{constants.GEM_TARGET}"
         gem_count.draw()
         arcade.draw_text(output, gem_count.center_x + 20, gem_count.center_y-10, arcade.color.WHITE, 16)
 

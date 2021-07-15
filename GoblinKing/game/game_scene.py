@@ -25,6 +25,9 @@ class GameScene(Scene):
     def __init__(self):
         self._score = Score()
         self._gem_count = GemCount()
+        water_spray = WaterSpray()
+        self._player = Player(water_spray)
+                
                 
         self.set_scene()
         
@@ -33,10 +36,10 @@ class GameScene(Scene):
         
         # create the cast
         water_list = arcade.SpriteList()
-        water_spray = WaterSpray()
-        player = Player(water_spray)
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
         timer = Timer()
+        self._player.reset()
+        
                 
 
         # Create Items list
@@ -136,7 +139,7 @@ class GameScene(Scene):
         # Fill the cast
         
         self._cast.add_actor("walls", maze)
-        self._cast.add_actor("player", player)
+        self._cast.add_actor("player", self._player)
 
         self._cast.add_actor("items", items)
         self._cast.add_actor("items", hazards)
@@ -148,7 +151,7 @@ class GameScene(Scene):
                 self._cast.add_actor("lives", life)
                 
         
-        engine = arcade.PhysicsEngineSimple(player, maze)
+        engine = arcade.PhysicsEngineSimple(self._player, maze)
 
         # create the script
         draw_actors_action = DrawActorsAction(engine)
