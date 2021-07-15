@@ -14,6 +14,8 @@ from game.item import Item
 from game import constants
 from game.check_conditions_action import CheckConditionsAction
 from game.water_spray import WaterSpray
+from game.gem_count import GemCount
+from game.lives import Lives
 import arcade
 import random
 
@@ -23,6 +25,7 @@ class GameScene(Scene):
     def __init__(self):
         self._timer = Timer()
         self._score = Score()
+        self._gem_count = GemCount()
                 
         self.set_scene()
         
@@ -34,6 +37,7 @@ class GameScene(Scene):
         water_spray = WaterSpray()
         player = Player(water_spray)
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
+        
 
         # Create Items list
         items = arcade.SpriteList()
@@ -123,11 +127,13 @@ class GameScene(Scene):
                 lower=0,
                 upper=450
         )
+        
                 
         self._cast = Cast()
                 
         self._cast.add_actor("timer", self._timer)
         self._cast.add_actor("score", self._score)
+        self._cast.add_actor("gem count", self._gem_count)
         # Fill the cast
         
         self._cast.add_actor("walls", maze)
@@ -136,6 +142,11 @@ class GameScene(Scene):
         self._cast.add_actor("items", items)
         self._cast.add_actor("items", hazards)
         self._cast.add_actor("items", waters)
+        
+        for i in range(0,3):
+                life = Lives()
+                life.center_x -= i * 32
+                self._cast.add_actor("lives", life)
                 
         
         engine = arcade.PhysicsEngineSimple(player, maze)

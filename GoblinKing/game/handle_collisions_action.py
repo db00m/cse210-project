@@ -44,12 +44,14 @@ class HandleCollisionsAction(Action):
         # Remove item from the items list
         score = cast.first_actor("score")
         timer = cast.first_actor("timer")
+        gem_count = cast.first_actor("gem count")
         for item in item_hit_list:
 
             if item.get_type() == "item":
                 if item._value == 10:
                     timer.reduce_time(constants.TIME_REDUCE)
                 else:
+                    gem_count.add_gem()
                     score.add_score(item._value)
                 items.remove(item)
                 
@@ -60,3 +62,11 @@ class HandleCollisionsAction(Action):
         player = cast.first_actor("player")
         for hazard in hazard_hit_list:
                 player.hit()
+                lives = cast.get_actors("lives")
+                
+                if player.get_lives == 2:
+                    lives[2].lose_heart()
+                elif player.get_lives == 1:
+                    lives[1].lose_heart()
+                
+                    
