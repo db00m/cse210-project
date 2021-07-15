@@ -33,8 +33,8 @@ class Player(Actor):
             self.change_y = -constants.MOVE_SPEED
         
     def hit(self):
-        self.change_y *= -1
-        self.change_x *= -1
+        self.change_y *= -5
+        self.change_x *= -5
         self._was_hit = True
         self.lives -= 1
         
@@ -62,6 +62,9 @@ class Player(Actor):
             water.center_y = 13
             water.scale = constants.WATER_SCALE/2
             
+    def get_lives(self):
+        return self.lives
+            
     def pick_up_item(self, item):
         if item.get_type() == "water":
             self._waters.append(item)
@@ -84,9 +87,11 @@ class Player(Actor):
 
     def check_complete(self):
         return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
-    
-    def check_death(self):
-        return self.lives < 0
+   
     
     def check_win(self):
         return self.get_gems() >= 20
+
+    def _check_death(self):
+        return self.lives < 1
+

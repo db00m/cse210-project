@@ -3,6 +3,7 @@ import arcade
 # GAME CONSTANTS
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 607
+SCREEN_TITLE = "Realm of the Goblin King"
 CENTER_X = SCREEN_WIDTH / 2
 CENTER_Y = SCREEN_HEIGHT / 2
 MAZE_WIDTH = 20
@@ -23,6 +24,8 @@ GEM.append(arcade.load_texture(":resources:images/items/gemBlue.png"))
 FIRE = arcade.load_texture("local_resources/fire.png")
 WATER = arcade.load_texture("local_resources/water.png")
 WATER_SPRAY = arcade.load_texture("local_resources/water_spray.png")
+HEART_FULL = arcade.load_texture("local_resources/heart_full.png")
+HEART_EMPTY = arcade.load_texture("local_resources/heart_empty.png")
 WATER_SCALE = 0.02
 COMPLETION_SCORE = 500
 TIME_REDUCE = 30
