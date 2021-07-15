@@ -23,7 +23,6 @@ import random
 class GameScene(Scene):
 
     def __init__(self):
-        self._timer = Timer()
         self._score = Score()
         self._gem_count = GemCount()
                 
@@ -37,7 +36,8 @@ class GameScene(Scene):
         water_spray = WaterSpray()
         player = Player(water_spray)
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
-        
+        timer = Timer()
+                
 
         # Create Items list
         items = arcade.SpriteList()
@@ -112,26 +112,25 @@ class GameScene(Scene):
         hazards = place_objects(
                 constants.FIRE, 
                 "fire",
-                10, 
+                5, 
                 scale=0.05,
-                left=300,
-                lower=300
+                left=400,
+                lower=400
         )
         #Place water:
         waters = place_objects(
                 constants.WATER, 
                 "water",
-                10, 
+                5, 
                 scale=constants.WATER_SCALE, 
                 right=300,
-                lower=0,
-                upper=450
+                upper=200
         )
         
                 
         self._cast = Cast()
                 
-        self._cast.add_actor("timer", self._timer)
+        self._cast.add_actor("timer", timer)
         self._cast.add_actor("score", self._score)
         self._cast.add_actor("gem count", self._gem_count)
         # Fill the cast
