@@ -92,6 +92,6 @@ class Player(Actor):
     def check_win(self):
         return self.get_gems() >= 20
 
-    def _check_death(self):
+    def check_death(self):
         return self.lives < 1
 
