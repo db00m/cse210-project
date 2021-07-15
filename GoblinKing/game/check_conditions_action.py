@@ -15,6 +15,9 @@ class CheckConditionsAction(Action):
 	def execute(self, cast, cue, callback):
 		cue_info = cue.get_info()
 		player = cast.first_actor("player")
+
+		timer = cast.first_actor("timer")
+		score = cast.first_actor("score")
 		if player.check_complete():
 			if player.check_win():
 				callback.on_scene_finished(EndGameScene(state="win"))
@@ -22,6 +25,7 @@ class CheckConditionsAction(Action):
 				callback.get_scene().set_scene()
 		elif player.check_death():
 			callback.on_scene_finished(EndGameScene(state="lose"))
+
 				
 				
 			
