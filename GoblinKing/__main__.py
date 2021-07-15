@@ -1,16 +1,15 @@
 import arcade
 from core.director import Director
 from game import constants
-from game.game_scene import GameScene
-
+from game.start_game_scene import StartGameScene
 
 def main():
     width = constants.SCREEN_WIDTH
     height = constants.SCREEN_HEIGHT
     title = constants.SCREEN_TITLE
-    game_scene = GameScene()
+    start_scene = StartGameScene()
     director = Director(width, height, title)
-    director.direct_scene(game_scene)
+    director.direct_scene(start_scene)
     arcade.run()
 
 
