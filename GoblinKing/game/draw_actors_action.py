@@ -42,13 +42,13 @@ class DrawActorsAction(Action):
     def _draw_timer(self, cast):
         timer = cast.get_actors("timer")
         output = f"Time elapsed: {timer[0].display_time}"
-        arcade.draw_text(output, timer[0].center_x, timer[0].center_y + 5, arcade.color.WHITE, 16)
+        arcade.draw_text(output, timer[0].center_x, timer[0].center_y + 5, arcade.color.BLACK, 16)
 
 
     def _draw_score(self, cast):
         score = cast.get_actors("score")
         output = f"Score: {score[0].score}"
-        arcade.draw_text(output, score[0].center_x-75, score[0].center_y + 5, arcade.color.WHITE, 16)
+        arcade.draw_text(output, score[0].center_x-75, score[0].center_y + 5, arcade.color.BLACK, 16)
         
 
     def _draw_gem_count(self, cast):
@@ -56,7 +56,7 @@ class DrawActorsAction(Action):
         count = gem_count.get_count()
         output = f"{count}/{constants.GEM_TARGET}"
         gem_count.draw()
-        arcade.draw_text(output, gem_count.center_x + 20, gem_count.center_y-10, arcade.color.WHITE, 16)
+        arcade.draw_text(output, gem_count.center_x + 20, gem_count.center_y-10, arcade.color.BLACK, 16)
 
     def _draw_lives(self, cast):
         lives = cast.get_actors("lives")
