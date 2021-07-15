@@ -60,3 +60,11 @@ class HandleCollisionsAction(Action):
         player = cast.first_actor("player")
         for hazard in hazard_hit_list:
                 player.hit()
+                lives = cast.get_actors("lives")
+                
+                if player.get_lives == 2:
+                    lives[2].lose_heart()
+                elif player.get_lives == 1:
+                    lives[1].lose_heart()
+                
+                    
