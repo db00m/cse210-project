@@ -12,7 +12,7 @@ import random
 
 class EndGameScene(Scene):
 	
-	def __init__(self, state="lose"):
+	def __init__(self, score, state="lose"):
 		cast = Cast()
 		
 
@@ -29,6 +29,7 @@ class EndGameScene(Scene):
 		
 		
 		cast.add_actor("message", message)
+		cast.add_actor("score", score)
 		
 		# create the script
 		draw_view = DrawView(None)
