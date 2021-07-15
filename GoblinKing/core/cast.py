@@ -5,7 +5,6 @@ from itertools import chain
 class Cast:
 
     def __init__(self):
-        super().__init__()
         self._current_actors = defaultdict(list)
         self._removed_actors = defaultdict(list)
         

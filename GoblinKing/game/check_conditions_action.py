@@ -4,6 +4,7 @@ import arcade
 from core.action import Action
 from game import constants
 from core.cue import Cue
+from game.end_game_scene import EndGameScene
 
 
 class CheckConditionsAction(Action):
@@ -14,10 +15,17 @@ class CheckConditionsAction(Action):
 	def execute(self, cast, cue, callback):
 		cue_info = cue.get_info()
 		player = cast.first_actor("player")
+
 		timer = cast.first_actor("timer")
 		score = cast.first_actor("score")
-		if player.check_win():
-			score.calculate_time_score(timer.elapsed_time)
-			callback.get_scene().set_scene()
+		if player.check_complete():
+			if player.check_win():
+				callback.on_scene_finished(EndGameScene(state="win"))
+			else:
+				callback.get_scene().set_scene()
+		elif player.check_death():
+			callback.on_scene_finished(EndGameScene(state="lose"))
+
 				
 				
+			

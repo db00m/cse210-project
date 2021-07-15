@@ -14,7 +14,8 @@ class Player(Actor):
         self.scale = 0.25
         self.change_x = 0
         self.change_y = 0
-        self._items = arcade.SpriteList()
+        self._gems = arcade.SpriteList()
+        self._waters = arcade.SpriteList()
         self._was_hit = False
         self._water = 0
         self.lives = 3
@@ -40,8 +41,6 @@ class Player(Actor):
     def update(self):
         self._update_position()
         self._update_item_list()
-        self.check_win()
-        self._check_death()
             
         
     def get_spray(self):
@@ -57,31 +56,42 @@ class Player(Actor):
         self._water_spray.move(self)
 
     def _update_item_list(self):
-        for i in range(len(self._items)):
-            item = self._items[i]
-            item.center_x = 30 * i + 10
-            item.center_y = 13
-            item.scale = constants.WATER_SCALE/2
+        for i in range(len(self._waters)):
+            water = self._waters[i]
+            water.center_x = 30 * i + 10
+            water.center_y = 13
+            water.scale = constants.WATER_SCALE/2
+            
+    def get_lives(self):
+        return self.lives
             
     def pick_up_item(self, item):
         if item.get_type() == "water":
-            self._items.append(item)
+            self._waters.append(item)
             self._water += 1
+        else:
+            self._gems.append(item)
             
-
+    def get_gems(self):
+        return len(self._gems)
+    
     def has_water(self):
         return self._water > 0
         
     def use_water(self):
         self._water -= 1
-        return self._items.pop()
+        return self._waters.pop()
         
-    def get_items(self):
-        return self._items
+    def get_water(self):
+        return self._water
 
-    def check_win(self):
+    def check_complete(self):
         return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
+   
     
-    def _check_death(self):
-        if self.lives < 1:
-            print("You are dead.")
+    def check_win(self):
+        return self.get_gems() >= 20
+
+    def check_death(self):
+        return self.lives < 1
+
