@@ -46,7 +46,7 @@ class Maze(arcade.SpriteList):
 			for row in range(height):
 				for column in range(width):
 					if maze[row][column] == 1:
-						wall = arcade.Sprite(":resources:images/tiles/grassCenter.png", SPRITE_SCALING)
+						wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", SPRITE_SCALING)
 						wall.center_x = column * SPRITE_SIZE + SPRITE_SIZE / 2
 						wall.center_y = row * SPRITE_SIZE + SPRITE_SIZE / 2
 						self.append(wall)
@@ -68,7 +68,7 @@ class Maze(arcade.SpriteList):
 					column_count = end_column - start_column + 1
 					column_mid = (start_column + end_column) / 2
 					
-					wall = arcade.Sprite(":resources:images/tiles/grassCenter.png", SPRITE_SCALING,
+					wall = arcade.Sprite(":resources:images/tiles/boxCrate_double.png", SPRITE_SCALING,
 										repeat_count_x=column_count)
 					wall.center_x = column_mid * SPRITE_SIZE + SPRITE_SIZE / 2
 					wall.center_y = row * SPRITE_SIZE + SPRITE_SIZE / 2
