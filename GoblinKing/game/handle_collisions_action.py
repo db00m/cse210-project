@@ -51,12 +51,15 @@ class HandleCollisionsAction(Action):
                 else:
                     gem_count.add_gem()
                     score.add_score(item._value)
+                    player.pick_up_item(item)
                 items.remove(item)
+            else:
+                player.pick_up_item(item)
+                
+            #Add the item to the plyers item list, not sure what this will be used for yet.
+            
+    def _encounter_hazard(self,cast,hazard_hit_list):
 
-            # Add the item to the plyers item list, not sure what this will be used for yet.
-            player.pick_up_item(item)
-
-    def _encounter_hazard(self, cast, hazard_hit_list):
         player = cast.first_actor("player")
         for hazard in hazard_hit_list:
             player.hit()
