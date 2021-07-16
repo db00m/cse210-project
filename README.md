@@ -1,6 +1,6 @@
-# Realm of The Goblin King
+# Realm of the King
 
-Realm of the Goblin King is a concept game based on *Labyrinth*. The game play involves a maze the player must navigate to win.  Finish the maze quickly and get more points.  Run into too many hazards and the player dies.
+Realm of the King is a concept game based on *Labyrinth*. The game play involves a maze the player must navigate to win.  Finish the maze quickly and get more points.  Run into too many hazards and the player dies.
 
 
 # Technologies:

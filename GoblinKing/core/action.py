@@ -1,7 +1,5 @@
 class Action:
-
     class Callback:
-
         def on_finished(self, next_scene):
             pass
 
@@ -14,9 +12,9 @@ class Action:
 
     def disable(self):
         self._enable = False
-        
+
     def execute(self, cast, cue, callback):
         pass
-    
+
     def is_enabled(self):
         return self._enabled

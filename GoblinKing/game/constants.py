@@ -16,7 +16,12 @@ DOWN = "d"
 SCALE = 0.2
 ITEMS = 5
 GEM = []
-GEM.append(arcade.load_texture("local_resources/stopwatch.png"))
+GEM.append(arcade.load_texture("local_resources/stopwatch3.png"))
+# GEM.append(arcade.load_texture("local_resources/stopwatch.png"))
+"""GEM.append(arcade.load_texture("local_resources/yellow.png"))
+GEM.append(arcade.load_texture("local_resources/green.png"))
+GEM.append(arcade.load_texture("local_resources/red.png"))
+GEM.append(arcade.load_texture("local_resources/blue.png"))"""
 GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemGreen.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemRed.png"))
@@ -26,7 +31,7 @@ WATER = arcade.load_texture("local_resources/water.png")
 WATER_SPRAY = arcade.load_texture("local_resources/water_spray.png")
 HEART_FULL = arcade.load_texture("local_resources/heart_full.png")
 HEART_EMPTY = arcade.load_texture("local_resources/heart_empty.png")
-WATER_SCALE = 0.25
+WATER_SCALE = 0.3
 COMPLETION_SCORE = 500
 TIME_REDUCE = 30
 SCORE_DECREASE = 50
@@ -36,5 +41,5 @@ GEM_TARGET = 10
 # ANIMAL CONSTANTS
 PLAYER_JUMP_SPEED = 15
 PLAYER_ANIMATION_RATE = 3
-PLAYER_PATH = ":resources:images/enemies/slimeBlock.png"
+PLAYER_PATH = "local_resources/player.png"
 PLAYER_IDLE = arcade.load_texture(f"{PLAYER_PATH}")
