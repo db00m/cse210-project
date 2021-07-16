@@ -3,7 +3,7 @@ import arcade
 # GAME CONSTANTS
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 607
-SCREEN_TITLE = "Realm of the Goblin King"
+SCREEN_TITLE = "Realm of the King"
 CENTER_X = SCREEN_WIDTH / 2
 CENTER_Y = SCREEN_HEIGHT / 2
 MAZE_WIDTH = 20
@@ -17,11 +17,6 @@ SCALE = 0.2
 ITEMS = 5
 GEM = []
 GEM.append(arcade.load_texture("local_resources/stopwatch3.png"))
-# GEM.append(arcade.load_texture("local_resources/stopwatch.png"))
-"""GEM.append(arcade.load_texture("local_resources/yellow.png"))
-GEM.append(arcade.load_texture("local_resources/green.png"))
-GEM.append(arcade.load_texture("local_resources/red.png"))
-GEM.append(arcade.load_texture("local_resources/blue.png"))"""
 GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemGreen.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemRed.png"))
