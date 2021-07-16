@@ -16,11 +16,11 @@ DOWN = "d"
 SCALE = 0.2
 ITEMS = 5
 GEM = []
-GEM.append(arcade.load_texture("local_resources/stopwatch3.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemYellow.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemGreen.png"))
 GEM.append(arcade.load_texture(":resources:images/items/gemBlue.png"))
-GEM.append(arcade.load_texture("local_resources/gemYellow.png"))
+GEM.append(arcade.load_texture(":resources:images/items/gemRed.png"))
+GEM.append(arcade.load_texture("local_resources/stopwatch3.png"))
 FIRE = arcade.load_texture("local_resources/fire.png")
 WATER = arcade.load_texture("local_resources/water2.png")
 WATER_SPRAY = arcade.load_texture("local_resources/water_spray.png")
