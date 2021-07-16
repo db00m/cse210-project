@@ -23,9 +23,11 @@ import random
 class GameScene(Scene):
 
     def __init__(self):
-        self._timer = Timer()
         self._score = Score()
         self._gem_count = GemCount()
+        water_spray = WaterSpray()
+        self._player = Player(water_spray)
+                
                 
         self.set_scene()
         
@@ -34,10 +36,11 @@ class GameScene(Scene):
         
         # create the cast
         water_list = arcade.SpriteList()
-        water_spray = WaterSpray()
-        player = Player(water_spray)
         maze = Maze(constants.MAZE_HEIGHT,constants.MAZE_WIDTH)
+        timer = Timer()
+        self._player.reset()
         
+                
 
         # Create Items list
         items = arcade.SpriteList()
@@ -112,44 +115,44 @@ class GameScene(Scene):
         hazards = place_objects(
                 constants.FIRE, 
                 "fire",
-                10, 
+                5, 
                 scale=0.05,
-                left=300,
-                lower=300
+                left=400,
+                lower=400
         )
         #Place water:
         waters = place_objects(
                 constants.WATER, 
                 "water",
-                10, 
+                5, 
                 scale=constants.WATER_SCALE, 
                 right=300,
-                lower=0,
-                upper=450
+                upper=200
         )
         
                 
         self._cast = Cast()
                 
-        self._cast.add_actor("timer", self._timer)
+        self._cast.add_actor("timer", timer)
         self._cast.add_actor("score", self._score)
         self._cast.add_actor("gem count", self._gem_count)
         # Fill the cast
         
         self._cast.add_actor("walls", maze)
-        self._cast.add_actor("player", player)
+        self._cast.add_actor("player", self._player)
 
         self._cast.add_actor("items", items)
         self._cast.add_actor("items", hazards)
         self._cast.add_actor("items", waters)
         
+
         for i in range(0,3):
                 life = Lives()
                 life.center_x -= i * 32
                 self._cast.add_actor("lives", life)
                 
         
-        engine = arcade.PhysicsEngineSimple(player, maze)
+        engine = arcade.PhysicsEngineSimple(self._player, maze)
 
         # create the script
         draw_actors_action = DrawActorsAction(engine)

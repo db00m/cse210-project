@@ -67,6 +67,7 @@ class HandleCollisionsAction(Action):
                 if player.get_lives == 2:
                     lives[2].lose_heart()
                 elif player.get_lives == 1:
+                    lives[2].lose_heart()
                     lives[1].lose_heart()
                 
                     

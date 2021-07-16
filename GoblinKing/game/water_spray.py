@@ -24,7 +24,7 @@ class WaterSpray(Actor):
 		
 
 	def splash(self):
-		self._grow_rate = 0.015
+		self._grow_rate = 0.010
 		
 	def stop(self):
 		self.scale = 0.01

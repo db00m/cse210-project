@@ -21,7 +21,12 @@ class Player(Actor):
         self.lives = 3
 
 
-    
+    def reset(self):
+        self._waters = arcade.SpriteList()
+        self._water = 0
+        self.center_x = 50
+        self.center_y = 50
+        
     def walk(self,direction):
         if direction == constants.LEFT:
             self.change_x = -constants.MOVE_SPEED
@@ -90,7 +95,7 @@ class Player(Actor):
    
     
     def check_win(self):
-        return self.get_gems() >= 20
+        return self.get_gems() >= constants.GEM_TARGET
 
     def check_death(self):
         return self.lives < 1

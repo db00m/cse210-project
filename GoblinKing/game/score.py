@@ -13,6 +13,9 @@ class Score(Actor):
 
     def add_score(self, bonus):
         self.score += bonus
+        
+    def current_score(self):
+        return self.score
     
     def calculate_time_score(self, time):
         base_score = constants.COMPLETION_SCORE
