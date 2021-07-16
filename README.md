@@ -1,36 +1,12 @@
 # Realm of the King
 
-Realm of the King is a concept game based on *Labyrinth*. The game play involves a maze the player must navigate to win.  Finish the maze quickly and get more points.  Run into too many hazards and the player dies.
+Welcome to the *Realm of the King*!  In this maze solving game of exploation and adventure help the lonely king to find gems, collect water, and extinguish flames.  Ues the arrow keys or WASD keys to move.  When water is collected, use the space bar to deploy.  Beware that fire is dangerous, get close enough to put out the fire using water, but close enogh to get burned.  Get burned too many times and it's game over.  Collect 20 gems to win, and finish each maze as fast as possible to get the highest score.
 
 
 # Technologies:
 
-We will be using Python as the language. Then we will use the Arcade and Random libraries. 
-
-
-# Goals:
-
-1. Create a maze solving game including features like:
-   - A moving player
-   - A map with walls the player cannot going through
-   - A way to win
-2. Additional game play features
-   - Simple Graphics
-   - Bigger Map
-   - Randomly generated Map
-   - Timer
-3. Points
-   - Point system
-   - Pick up items
-   - Power ups
-   - Player Health
-   - Hazards
-4. Fighting
-   - Player Attacks
-   - Enemies
-   - Advanced Puzzles
-   - Game Modes
-5. Advanced Graphics
+- `python 3.8`
+- `aracde library`
 
 
 # Authors:
