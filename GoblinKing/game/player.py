@@ -4,7 +4,6 @@ import arcade
 
 
 class Player(Actor):
-
     def __init__(self, water_spray):
         super().__init__()
         self.center_x = 50
@@ -20,14 +19,13 @@ class Player(Actor):
         self._water = 0
         self.lives = 3
 
-
     def reset(self):
         self._waters = arcade.SpriteList()
         self._water = 0
         self.center_x = 50
         self.center_y = 50
-        
-    def walk(self,direction):
+
+    def walk(self, direction):
         if direction == constants.LEFT:
             self.change_x = -constants.MOVE_SPEED
         elif direction == constants.RIGHT:
@@ -36,21 +34,20 @@ class Player(Actor):
             self.change_y = constants.MOVE_SPEED
         elif direction == constants.DOWN:
             self.change_y = -constants.MOVE_SPEED
-        
+
     def hit(self):
         self.change_y *= -5
         self.change_x *= -5
         self._was_hit = True
         self.lives -= 1
-        
+
     def update(self):
         self._update_position()
         self._update_item_list()
-            
-        
+
     def get_spray(self):
         return self._water_spray
-        
+
     def _update_position(self):
         self.center_x += self.change_x
         self.center_y += self.change_y
@@ -64,39 +61,40 @@ class Player(Actor):
         for i in range(len(self._waters)):
             water = self._waters[i]
             water.center_x = 30 * i + 10
-            water.center_y = 13
-            water.scale = constants.WATER_SCALE/2
-            
+            water.center_y = 14
+            water.scale = constants.WATER_SCALE - 0.05
+
     def get_lives(self):
         return self.lives
-            
+
     def pick_up_item(self, item):
         if item.get_type() == "water":
             self._waters.append(item)
             self._water += 1
         else:
             self._gems.append(item)
-            
+
     def get_gems(self):
         return len(self._gems)
-    
+
     def has_water(self):
         return self._water > 0
-        
+
     def use_water(self):
         self._water -= 1
         return self._waters.pop()
-        
+
     def get_water(self):
         return self._water
 
     def check_complete(self):
-        return self.center_y > constants.SCREEN_HEIGHT or self.center_x > constants.SCREEN_WIDTH
-   
-    
+        return (
+            self.center_y > constants.SCREEN_HEIGHT
+            or self.center_x > constants.SCREEN_WIDTH
+        )
+
     def check_win(self):
         return self.get_gems() >= constants.GEM_TARGET
 
     def check_death(self):
         return self.lives < 1
-

@@ -12,11 +12,11 @@ class Timer(Actor):
         self.stop_time = 0.0
         self.elapsed_time = 0
         self.display_time = ""
-    
+
     # Will be called when the game starts
     def start_timer(self):
         self.start_time = time.time()
-    
+
     # Will be called when the maze is solved
     def stop_timer(self):
         self.stop_time = time.time()

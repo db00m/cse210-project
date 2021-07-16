@@ -8,23 +8,18 @@ from game.end_game_scene import EndGameScene
 
 
 class CheckConditionsAction(Action):
-	
-	def __init__(self, engine):
-		super().__init__(engine)
-		
-	def execute(self, cast, cue, callback):
-		cue_info = cue.get_info()
-		player = cast.first_actor("player")
-		score = cast.first_actor("score").current_score()
-		
-		if player.check_complete():
-			if player.check_win():
-				callback.on_scene_finished(EndGameScene(score,state="win"))
-			else:
-				callback.get_scene().set_scene()
-		elif player.check_death():
-			callback.on_scene_finished(EndGameScene(score,state="lose"))
+    def __init__(self, engine):
+        super().__init__(engine)
 
-				
-				
-			
+    def execute(self, cast, cue, callback):
+        cue_info = cue.get_info()
+        player = cast.first_actor("player")
+        score = cast.first_actor("score").current_score()
+
+        if player.check_complete():
+            if player.check_win():
+                callback.on_scene_finished(EndGameScene(score, state="win"))
+            else:
+                callback.get_scene().set_scene()
+        elif player.check_death():
+            callback.on_scene_finished(EndGameScene(score, state="lose"))

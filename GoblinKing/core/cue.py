@@ -16,8 +16,6 @@ class Cue:
 
     def get_info(self):
         return self._info
-    
+
     def get_name(self):
         return self._name
-
-    
