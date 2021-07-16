@@ -14,12 +14,20 @@ class CheckConditionsAction(Action):
     def execute(self, cast, cue, callback):
         cue_info = cue.get_info()
         player = cast.first_actor("player")
-        score = cast.first_actor("score").current_score()
+        score = cast.first_actor("score")
+        time = cast.first_actor("timer").elapsed_time
+        
+
+        
+        final_score = score.score
 
         if player.check_complete():
+            score.calculate_time_score(time)
+            final_score = score.score
             if player.check_win():
-                callback.on_scene_finished(EndGameScene(score, state="win"))
+                callback.on_scene_finished(EndGameScene(final_score, state="win"))
             else:
                 callback.get_scene().set_scene()
         elif player.check_death():
-            callback.on_scene_finished(EndGameScene(score, state="lose"))
+            callback.on_scene_finished(EndGameScene(final_score, state="lose"))
+            
