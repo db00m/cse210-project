@@ -7,6 +7,13 @@ class DrawMenuAction(Action):
 		super().__init__(engine)
 		
 	def execute(self, cast, cue, callback):
+		self._draw_background(cast)
 		title = cast.first_actor("title")
-		arcade.draw_text("Press 'Enter' to Start", title.center_x, title.center_y, arcade.color.WHITE, 16)
+		title.draw()
+		arcade.draw_text("Press 'Enter' to Start", title.center_x - 100, title.center_y-300, arcade.color.BLACK, 16)
+		
+	def _draw_background(self, cast):
+		walls = cast.get_actors("background")
+		for block in walls:
+			block.draw()
 		

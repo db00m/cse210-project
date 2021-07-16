@@ -31,6 +31,7 @@ class EndGameScene(Scene):
 		cast.add_actor("message", message)
 		cast.add_actor("score", score)
 		
+		
 		# create the script
 		draw_view = DrawView(None)
 		

@@ -145,6 +145,7 @@ class GameScene(Scene):
         self._cast.add_actor("items", hazards)
         self._cast.add_actor("items", waters)
         
+
         for i in range(0,3):
                 life = Lives()
                 life.center_x -= i * 32
