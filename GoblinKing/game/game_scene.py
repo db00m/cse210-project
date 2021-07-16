@@ -99,7 +99,6 @@ class GameScene(Scene):
                 item._value = 0
                 item.scale = 0.022
             else:
-                item.scale = 0.45
                 item_type = random.randint(1, 4)
                 item._value = item_type * 10
 
