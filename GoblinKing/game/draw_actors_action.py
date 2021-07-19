@@ -1,6 +1,9 @@
 from core.action import Action
 from game import constants
 import arcade
+import pyglet
+from pathlib import Path
+from arcade.resources import resolve_resource_path
 
 
 class DrawActorsAction(Action):
@@ -15,6 +18,18 @@ class DrawActorsAction(Action):
         self._draw_score(cast)
         self._draw_gem_count(cast)
         self._draw_lives(cast)
+
+    def load_font(self, font_name):
+        """ Load a font for later use """
+        if font_name.startswith(":resources:"):
+            try:
+                file_path = resolve_resource_path(font_name)
+            except FileNotFoundError:
+                raise FileNotFoundError(f"Unable to find resource with the name: {font_name}")
+        else:
+            file_path = font_name
+            
+        pyglet.font.add_file(str(file_path))
 
     def _draw_maze(self, cast):
         walls = cast.get_actors("walls")
@@ -38,8 +53,9 @@ class DrawActorsAction(Action):
         timer = cast.get_actors("timer")
         output = f"Time elapsed: {timer[0].display_time}"
         arcade.draw_text(
-            output, timer[0].center_x, timer[0].center_y + 5, arcade.color.BLACK, 16
-        )
+            output, timer[0].center_x, timer[0].center_y + 5, arcade.color.BLACK, 16)
+
+        # font_name = self.load_font("local_resources/pixel.ttf")
 
     def _draw_score(self, cast):
         score = cast.get_actors("score")
@@ -77,3 +93,4 @@ class DrawActorsAction(Action):
             lives[0].lose_heart()
         else:
             pass
+            
