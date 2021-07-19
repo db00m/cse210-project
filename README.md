@@ -33,13 +33,13 @@ root                    (project root folder)
 +-- README.md           (general info)
 ```
 
-# Technologies:
+## Required Technologies:
 
 - `python 3.8`
 - `aracde library`
 
 
-# Authors:
+## Authors:
 
 * David Bloomfied: david.s.bloomfield@gmail.com
 * Jacob Cloward: jacobcloward@yahoo.com
