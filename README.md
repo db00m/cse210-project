@@ -1,6 +1,6 @@
 # Realm of the King
 
-Welcome to the *Realm of the King*.  In this maze solving game of exploation and adventure help the lonely king to find gems, collect water, and extinguish flames.  Ues the arrow keys or WASD keys to move.  The goal is simple, collect 20 gems and get the highest score without getting burned by fire.  To do so, collect water and use the space bar to engage it's ablities.  Get close enough to the fire to put it out, but not so close that you get burned.  Solve each maze quickly to get point bonus and colect 20 gems to win!
+Welcome to the *Realm of the King*.  In this maze solving game of exploration and adventure help the lonely king to find gems, collect water, and extinguish flames.  Use the arrow keys or WASD keys to move.  The goal is simple, collect 20 gems and get the highest score without getting burned by fire.  To do so, collect water and use the space bar to engage its abilities.  Get close enough to the fire to put it out, but not so close that you get burned.  Solve each maze quickly to get point bonus and collect 20 gems to win!
 
 ## Getting Started
 ---
@@ -36,11 +36,11 @@ root                    (project root folder)
 ## Required Technologies:
 
 - `python 3.8`
-- `aracde library`
+- `arcade library`
 
 
 ## Authors:
 
-* David Bloomfied: david.s.bloomfield@gmail.com
+* David Bloomfield: david.s.bloomfield@gmail.com
 * Jacob Cloward: jacobcloward@yahoo.com
 * TJ Putnam: teetothejay13@gmail.com
