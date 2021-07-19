@@ -19,6 +19,7 @@ class EndGameScene(Scene):
         message.center_x = constants.SCREEN_WIDTH / 2
         if state == "lose":
             message.texture = arcade.load_texture("local_resources/game_over.png")
+            score = "---"
         elif state == "win":
             message.texture = arcade.load_texture("local_resources/you_win.png")
 
