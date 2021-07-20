@@ -23,6 +23,8 @@ class WaterSpray(Actor):
                 self.scale = 0.01
 
     def splash(self):
+        print("called!")
+        arcade.play_sound(constants.SPLASH_SOUND)
         self._grow_rate = 0.010
 
     def stop(self):

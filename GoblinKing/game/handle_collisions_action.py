@@ -46,7 +46,7 @@ class HandleCollisionsAction(Action):
         for item in item_hit_list:
 
             if item.get_type() == "item":
-                if item._value == 10:
+                if item._value == 100:
                     timer.reduce_time(constants.TIME_REDUCE)
                 else:
                     gem_count.add_gem()
@@ -55,6 +55,7 @@ class HandleCollisionsAction(Action):
                 items.remove(item)
             else:
                 player.pick_up_item(item)
+                arcade.play_sound(constants.COLLECT_WATER)
                 
             #Add the item to the plyers item list, not sure what this will be used for yet.
             
@@ -64,7 +65,7 @@ class HandleCollisionsAction(Action):
         for hazard in hazard_hit_list:
             player.hit()
             lives = cast.get_actors("lives")
-
+            arcade.play_sound(constants.HIT_SOUND)
             if player.get_lives == 2:
                 lives[2].lose_heart()
             elif player.get_lives == 1:

@@ -13,7 +13,7 @@ import random
 class EndGameScene(Scene):
     def __init__(self, score, state="lose"):
         cast = Cast()
-
+        
         message = arcade.Sprite()
         message.center_y = constants.SCREEN_HEIGHT / 2
         message.center_x = constants.SCREEN_WIDTH / 2
@@ -35,3 +35,4 @@ class EndGameScene(Scene):
         # set the scene
         self.set_cast(cast)
         self.set_script(script)
+        

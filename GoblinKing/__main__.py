@@ -7,6 +7,7 @@ def main():
     width = constants.SCREEN_WIDTH
     height = constants.SCREEN_HEIGHT
     title = constants.SCREEN_TITLE
+    arcade.play_sound(constants.UNDERSCORE)
     start_scene = StartGameScene()
     director = Director(width, height, title)
     director.direct_scene(start_scene)

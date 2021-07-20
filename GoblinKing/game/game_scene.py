@@ -23,6 +23,7 @@ import random
 class GameScene(Scene):
     def __init__(self):
         self._score = Score()
+        
         self._gem_count = GemCount()
         water_spray = WaterSpray()
         self._player = Player(water_spray)
@@ -96,11 +97,11 @@ class GameScene(Scene):
             gem_or_time = random.randint(1, 3)
             if gem_or_time == 3:
                 item_type = 5
-                item._value = 0
+                item._value = 500
                 item.scale = 0.5
             else:
                 item_type = random.randint(1, 4)
-                item._value = item_type * 10
+                item._value = item_type * 100
 
             item.set_texture(constants.GEM[item_type - 1])
             placed = False
@@ -122,16 +123,21 @@ class GameScene(Scene):
 
         # Place fire:
         hazards = place_objects(
-            constants.FIRE, "fire", 5, scale=0.05, left=400, lower=400
+            constants.FIRE,
+            "fire",
+            7,
+            scale=0.05,
+            left=150,
+            lower=150
         )
         # Place water:
         waters = place_objects(
             constants.WATER,
             "water",
-            5,
+            10,
             scale=constants.WATER_SCALE,
-            right=300,
-            upper=200,
+            right=500,
+            upper=500,
         )
 
         self._cast = Cast()
@@ -173,3 +179,4 @@ class GameScene(Scene):
         # set the scene
         self.set_cast(self._cast)
         self.set_script(script)
+        

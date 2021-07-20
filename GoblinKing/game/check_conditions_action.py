@@ -27,6 +27,7 @@ class CheckConditionsAction(Action):
             if player.check_win():
                 callback.on_scene_finished(EndGameScene(final_score, state="win"))
             else:
+                arcade.play_sound(constants.COMPLETE_SOUND)
                 callback.get_scene().set_scene()
         elif player.check_death():
             callback.on_scene_finished(EndGameScene(final_score, state="lose"))
