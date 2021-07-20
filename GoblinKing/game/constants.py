@@ -28,7 +28,7 @@ GEM.append(arcade.load_texture("local_resources/yellow.png"))
 GEM.append(arcade.load_texture("local_resources/green.png"))
 GEM.append(arcade.load_texture("local_resources/blue.png"))
 GEM.append(arcade.load_texture("local_resources/red.png"))
-FIRE = arcade.load_texture("local_resources/fire.png")
+FIRE = arcade.load_texture("local_resources/fire_new.png")
 WATER = arcade.load_texture("local_resources/water2.png")
 WATER_SCALE = 0.2
 ITEM_CONSTANT = 128 * SCALE
